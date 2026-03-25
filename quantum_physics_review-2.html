@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>量子現象 — 高三完整複習</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=JetBrains+Mono:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#080c18;--bg2:#0d1120;--bg3:#111827;--card:#0f1522;
+  --border:#1a2740;--border2:#213350;
+  --text:#e8edf5;--text2:#8facc7;--text3:#4d6d8f;
+  --accent:#4f9cf9;--accent2:#7bc5ff;
+  --gold:#f5c842;--green:#3dd68c;--red:#ff6b6b;
+  --purple:#a78bfa;--orange:#fb923c;--teal:#2dd4bf;
+  --glow:rgba(79,156,249,0.13);--glow2:rgba(79,156,249,0.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--bg);color:var(--text);line-height:1.75;overflow-x:hidden;}
+body::before{
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(1px 1px at 15% 25%,rgba(255,255,255,.55) 0%,transparent 100%),
+    radial-gradient(1px 1px at 55% 12%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 78% 58%,rgba(255,255,255,.45) 0%,transparent 100%),
+    radial-gradient(1px 1px at 35% 72%,rgba(255,255,255,.3) 0%,transparent 100%),
+    radial-gradient(1px 1px at 88% 38%,rgba(255,255,255,.4) 0%,transparent 100%),
+    radial-gradient(1px 1px at 8% 82%,rgba(255,255,255,.3) 0%,transparent 100%),
+    radial-gradient(2px 2px at 48% 48%,rgba(79,156,249,.25) 0%,transparent 100%),
+    radial-gradient(1px 1px at 92% 88%,rgba(167,139,250,.3) 0%,transparent 100%);
+}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,12,24,.93);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);padding:0 1.8rem;height:58px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo{font-family:'Noto Serif TC',serif;font-size:1rem;font-weight:700;color:var(--accent2);letter-spacing:.05em;}
+.nav-logo span{color:var(--gold);}
+.nav-links{display:flex;gap:.15rem;flex-wrap:wrap;}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.72rem;padding:.35rem .6rem;border-radius:5px;transition:all .2s;letter-spacing:.02em;}
+.nav-links a:hover,.nav-links a.active{background:var(--glow);color:var(--accent2);}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 2rem 4rem;background:radial-gradient(ellipse 80% 55% at 50% 28%,rgba(79,156,249,.09) 0%,transparent 70%);}
+.hero-badge{display:inline-block;background:rgba(79,156,249,.1);border:1px solid rgba(79,156,249,.3);color:var(--accent2);font-size:.72rem;padding:.3rem .9rem;border-radius:50px;margin-bottom:1.5rem;letter-spacing:.12em;text-transform:uppercase;}
+.hero h1{font-family:'Noto Serif TC',serif;font-size:clamp(2.2rem,5.5vw,4.2rem);font-weight:700;line-height:1.2;background:linear-gradient(135deg,#fff 0%,var(--accent2) 50%,var(--purple) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:1rem;}
+.hero-sub{color:var(--text2);font-size:1rem;max-width:520px;margin:0 auto 2.5rem;}
+.hero-chips{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;}
+.chip{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:.45rem .9rem;font-size:.78rem;color:var(--text2);display:flex;align-items:center;gap:.4rem;transition:all .25s;cursor:default;}
+.chip:hover{border-color:var(--accent);color:var(--accent2);transform:translateY(-2px);}
+.chip .dot{width:7px;height:7px;border-radius:50%;}
+.scroll-hint{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.35rem;color:var(--text3);font-size:.68rem;letter-spacing:.1em;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+
+/* ── SECTIONS ── */
+.section{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:4.5rem 1.8rem;}
+.sec-header{display:flex;align-items:center;gap:.9rem;margin-bottom:2.8rem;}
+.sec-num{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--accent);background:rgba(79,156,249,.1);border:1px solid rgba(79,156,249,.2);padding:.2rem .55rem;border-radius:4px;letter-spacing:.08em;}
+.sec-title{font-family:'Noto Serif TC',serif;font-size:1.8rem;font-weight:700;}
+.sec-line{flex:1;height:1px;background:linear-gradient(to right,var(--border2),transparent);}
+.divider{position:relative;z-index:1;height:1px;max-width:1120px;margin:0 auto;background:linear-gradient(to right,transparent,var(--border2),transparent);}
+
+/* ── CARDS ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.8rem;transition:border-color .3s,box-shadow .3s;}
+.card:hover{border-color:var(--border2);box-shadow:0 0 28px var(--glow2);}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.card-title{font-size:1rem;font-weight:700;margin-bottom:.9rem;display:flex;align-items:center;gap:.5rem;}
+.icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.88rem;flex-shrink:0;}
+
+/* ── DIAGRAMS ── */
+.diag{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.2rem;margin:1.2rem 0;overflow:hidden;}
+.diag-label{font-size:.72rem;color:var(--text3);text-align:center;margin-top:.7rem;letter-spacing:.04em;}
+svg text{font-family:'Noto Sans TC',sans-serif;}
+
+/* ── FORMULA ── */
+.fbox{background:linear-gradient(135deg,rgba(79,156,249,.08),rgba(167,139,250,.05));border:1px solid rgba(79,156,249,.22);border-radius:10px;padding:1rem 1.3rem;margin:.7rem 0;font-family:'JetBrains Mono',monospace;font-size:1rem;color:var(--accent2);text-align:center;position:relative;}
+.fbox .fn{position:absolute;top:-.55rem;left:.9rem;background:var(--bg2);color:var(--text3);font-size:.66rem;padding:0 .45rem;letter-spacing:.07em;font-family:'Noto Sans TC',sans-serif;}
+.fbox.sm{font-size:.88rem;padding:.75rem 1rem;}
+
+/* ── DERIVATION STEPS ── */
+.deriv{background:rgba(79,156,249,.04);border:1px solid rgba(79,156,249,.12);border-radius:10px;padding:1.2rem 1.4rem;margin:1rem 0;}
+.deriv h4{font-size:.82rem;color:var(--accent);letter-spacing:.07em;text-transform:uppercase;margin-bottom:.8rem;}
+.deriv-step{display:flex;gap:.7rem;align-items:flex-start;padding:.35rem 0;font-size:.85rem;color:var(--text2);}
+.deriv-step .sn{min-width:22px;height:22px;border-radius:50%;background:rgba(79,156,249,.15);color:var(--accent);font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.deriv-step .seq{font-family:'JetBrains Mono',monospace;color:var(--accent2);font-size:.85rem;}
+
+/* ── TABLES ── */
+.tbl{width:100%;border-collapse:collapse;font-size:.86rem;margin:.8rem 0;}
+.tbl th{background:rgba(79,156,249,.1);color:var(--accent2);font-weight:600;padding:.6rem .9rem;text-align:left;border-bottom:1px solid var(--border2);font-size:.77rem;letter-spacing:.04em;}
+.tbl td{padding:.58rem .9rem;border-bottom:1px solid rgba(26,39,64,.5);color:var(--text2);vertical-align:top;}
+.tbl tr:hover td{background:rgba(79,156,249,.04);}
+
+/* ── TAGS ── */
+.tag{display:inline-block;padding:.12rem .45rem;border-radius:4px;font-size:.72rem;font-weight:600;}
+.tb{background:rgba(79,156,249,.15);color:var(--accent2);}
+.tg{background:rgba(61,214,140,.15);color:var(--green);}
+.ty{background:rgba(245,200,66,.15);color:var(--gold);}
+.tr{background:rgba(255,107,107,.15);color:var(--red);}
+.tp{background:rgba(167,139,250,.15);color:var(--purple);}
+.to{background:rgba(251,146,60,.15);color:var(--orange);}
+
+/* ── NOTICES ── */
+.notice{border-left:3px solid;padding:.75rem 1.1rem;border-radius:0 8px 8px 0;margin:.9rem 0;font-size:.85rem;}
+.nw{border-color:var(--gold);background:rgba(245,200,66,.06);}
+.ni{border-color:var(--accent);background:rgba(79,156,249,.06);}
+.ng{border-color:var(--green);background:rgba(61,214,140,.06);}
+.np{border-color:var(--purple);background:rgba(167,139,250,.06);}
+.notice strong{display:block;margin-bottom:.25rem;font-size:.77rem;letter-spacing:.05em;}
+.nw strong{color:var(--gold);}
+.ni strong{color:var(--accent2);}
+.ng strong{color:var(--green);}
+.np strong{color:var(--purple);}
+
+/* ── QUIZ ── */
+.qcard{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.4rem;margin:1.2rem 0;}
+.qq{font-weight:600;font-size:.93rem;margin-bottom:1rem;color:var(--text);display:flex;gap:.65rem;}
+.qn{background:var(--accent);color:#000;font-size:.72rem;font-weight:700;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.qopts{display:flex;flex-direction:column;gap:.45rem;margin-left:2rem;}
+.qopt{background:var(--card);border:1px solid var(--border);border-radius:7px;padding:.55rem .9rem;font-size:.85rem;color:var(--text2);cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:.55rem;}
+.qopt:hover{border-color:var(--border2);}
+.qopt.correct{border-color:var(--green);background:rgba(61,214,140,.1);color:var(--green);}
+.qopt.wrong{border-color:var(--red);background:rgba(255,107,107,.1);color:var(--red);}
+.qopt .ol{width:21px;height:21px;border:1.5px solid currentColor;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;}
+.qexp{display:none;margin-top:.9rem;margin-left:2rem;padding:.75rem .95rem;background:rgba(61,214,140,.06);border-left:2px solid var(--green);border-radius:0 8px 8px 0;font-size:.83rem;color:var(--text2);}
+
+/* ── FORMULA GRID ── */
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.95rem;}
+.fitem{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.1rem;transition:all .25s;}
+.fitem:hover{border-color:rgba(79,156,249,.4);box-shadow:0 0 18px var(--glow2);}
+.fi-name{font-size:.7rem;color:var(--text3);margin-bottom:.4rem;letter-spacing:.05em;text-transform:uppercase;}
+.fi-eq{font-family:'JetBrains Mono',monospace;font-size:1.05rem;color:var(--accent2);margin-bottom:.5rem;}
+.fi-note{font-size:.78rem;color:var(--text2);line-height:1.5;}
+.fi-exam{margin-top:.45rem;font-size:.72rem;color:var(--gold);display:flex;align-items:center;gap:.3rem;}
+
+/* ── COMPARE ── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin:1.2rem 0;}
+.cside{background:var(--bg2);border-radius:11px;padding:1.1rem;}
+.cside h4{font-size:.88rem;margin-bottom:.9rem;padding-bottom:.45rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.45rem;}
+.cside ul{list-style:none;}
+.cside li{padding:.35rem 0;font-size:.84rem;color:var(--text2);display:flex;align-items:flex-start;gap:.45rem;}
+.cside li::before{content:'—';color:var(--text3);flex-shrink:0;margin-top:2px;}
+
+/* ── ENERGY CONVERSION ── */
+.econv{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:1.2rem 0;}
+.econv-item{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;}
+.econv-item .ev{font-family:'JetBrains Mono',monospace;font-size:1.1rem;color:var(--accent2);margin-bottom:.35rem;}
+.econv-item .elabel{font-size:.72rem;color:var(--text3);}
+
+/* ── APP CARDS ── */
+.app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.app-card{background:var(--bg2);border:1px solid var(--border);border-radius:11px;padding:1.2rem;transition:all .25s;}
+.app-card:hover{border-color:var(--border2);transform:translateY(-2px);}
+.app-card .aico{font-size:1.8rem;margin-bottom:.7rem;}
+.app-card h4{font-size:.9rem;font-weight:700;margin-bottom:.5rem;color:var(--text);}
+.app-card p{font-size:.8rem;color:var(--text2);line-height:1.5;}
+
+/* ── PROCESS STEPS ── */
+.steps{display:flex;flex-direction:column;gap:0;}
+.step-row{display:flex;gap:1rem;padding:.8rem 0;}
+.step-num{width:32px;height:32px;border-radius:50%;background:rgba(79,156,249,.15);border:1.5px solid rgba(79,156,249,.3);color:var(--accent);font-size:.82rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-content{flex:1;}
+.step-content h4{font-size:.9rem;font-weight:600;color:var(--text);margin-bottom:.25rem;}
+.step-content p{font-size:.84rem;color:var(--text2);}
+.step-row+.step-row{border-top:1px solid rgba(26,39,64,.5);}
+
+/* ── PRIORITY ── */
+.prow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-bottom:1px solid var(--border);}
+.prow:last-child{border-bottom:none;}
+.pbadge{flex-shrink:0;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:800;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+  .g2,.g3,.compare,.econv,.app-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">量子現象 <span>複習</span></div>
+  <div class="nav-links">
+    <a href="#overview">總覽</a>
+    <a href="#electron">電子</a>
+    <a href="#millikan">密立坎</a>
+    <a href="#xray">X射線</a>
+    <a href="#blackbody">黑體輻射</a>
+    <a href="#lenard">雷納實驗</a>
+    <a href="#einstein">光量子論</a>
+    <a href="#energy">能量換算</a>
+    <a href="#formulas">公式表</a>
+    <a href="#quiz">練習題</a>
+    <a href="#strategy">複習策略</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">選修物理 Ⅴ · 第二章</div>
+  <h1>量子現象</h1>
+  <p class="hero-sub">從電子發現到光子論，完整掌握實驗推導、圖示分析與高分策略</p>
+  <div class="hero-chips">
+    <div class="chip"><span class="dot" style="background:var(--accent)"></span>電子的發現</div>
+    <div class="chip"><span class="dot" style="background:var(--teal)"></span>X 射線</div>
+    <div class="chip"><span class="dot" style="background:var(--gold)"></span>黑體輻射</div>
+    <div class="chip"><span class="dot" style="background:var(--green)"></span>光電效應</div>
+    <div class="chip"><span class="dot" style="background:var(--purple)"></span>光量子論</div>
+    <div class="chip"><span class="dot" style="background:var(--orange)"></span>能量換算</div>
+  </div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <svg width="11" height="15" viewBox="0 0 11 15" fill="none"><path d="M5.5 1v13M1 10l4.5 4.5L10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 01 OVERVIEW -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="overview">
+  <div class="sec-header"><span class="sec-num">01</span><h2 class="sec-title">核心概念與古典 vs 量子比較</h2><div class="sec-line"></div></div>
+
+  <div class="compare">
+    <div class="cside">
+      <h4><span style="color:var(--red)">✕</span> 古典物理的失敗</h4>
+      <ul>
+        <li>能量傳遞是連續的，可取任意值</li>
+        <li>光是電磁波，強度由振幅決定</li>
+        <li>光照夠久夠強就能打出電子（任何頻率）</li>
+        <li>短波輻射強度趨近無窮大（紫外災變）</li>
+        <li>粒子就是粒子，沒有波動性</li>
+      </ul>
+    </div>
+    <div class="cside" style="border:1px solid rgba(79,156,249,.18);">
+      <h4><span style="color:var(--green)">✓</span> 量子物理的突破</h4>
+      <ul>
+        <li>能量不連續，只能是最小單位的整數倍</li>
+        <li>光是光子（粒子），強度 = 光子數多寡</li>
+        <li>光電效應只取決於頻率，與強度無關</li>
+        <li>能量量子化後完美符合黑體輻射實驗</li>
+        <li>粒子也有波長（德布羅意物質波）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.2rem">
+    <div class="card-title">📋 本章知識地圖</div>
+    <table class="tbl">
+      <thead><tr><th>節次</th><th>核心概念</th><th>關鍵實驗</th><th>量子論角色</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag tb">2-1</span></td><td>電子的發現、荷質比、基本電量</td><td>湯姆森實驗、密立坎油滴</td><td>確認電子存在，電荷量子化</td></tr>
+        <tr><td><span class="tag tp">2-2</span></td><td>X 射線產生與晶體繞射</td><td>布拉格繞射實驗</td><td>電磁波波長極短，可分析晶體</td></tr>
+        <tr><td><span class="tag ty">2-3</span></td><td>黑體輻射、空腔輻射、量子化</td><td>普朗克量子論</td><td>量子論誕生，打破能量連續觀</td></tr>
+        <tr><td><span class="tag tg">2-4</span></td><td>光電效應、光子論</td><td>雷納實驗、密立坎光電實驗</td><td>確立光的粒子性，波粒二象性</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 02 ELECTRON DISCOVERY -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="electron">
+  <div class="sec-header"><span class="sec-num">02</span><h2 class="sec-title">電子的發現：湯姆森荷質比實驗</h2><div class="sec-line"></div></div>
+
+  <!-- 3 sentences intro -->
+  <div class="notice ni" style="margin-bottom:1.5rem">
+    <strong>🔬 實驗背景與意義</strong>
+    19 世紀末，科學家在低壓密閉玻璃管中接上高電壓，發現從陰極射出的神秘射線（陰極射線）能使螢光幕發光、穿越障礙物後留下陰影，且會使小滾輪滾動，顯示其具有動量。
+    1897 年，湯姆森設計速度選擇器，首次準確測量陰極射線粒子的「荷質比」（e/m），確認它是一種帶負電的微粒——即後來所稱的<strong>電子</strong>。
+    這個實驗推翻了原子不可分割的舊觀念，是近代物理的重要里程碑，湯姆森也因此獲得 1906 年諾貝爾物理獎。
+  </div>
+
+  <div class="g2">
+    <!-- Diagram -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(79,156,249,.15)">⚡</span>實驗裝置示意圖</div>
+      <div class="diag">
+        <svg viewBox="0 0 540 195" width="100%" style="max-height:180px">
+          <defs>
+            <marker id="a1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#4f9cf9"/></marker>
+            <marker id="a2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#3dd68c"/></marker>
+            <marker id="a3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#ff6b6b"/></marker>
+          </defs>
+          <!-- tube -->
+          <rect x="8" y="58" width="524" height="79" rx="18" fill="none" stroke="#1a2740" stroke-width="2"/>
+          <!-- cathode -->
+          <rect x="16" y="75" width="16" height="45" rx="3" fill="#5a7a9e"/>
+          <text x="24" y="135" fill="#5a7a9e" font-size="10" text-anchor="middle">陰極</text>
+          <!-- slits -->
+          <rect x="56" y="77" width="5" height="14" fill="#1a2740"/>
+          <rect x="56" y="104" width="5" height="14" fill="#1a2740"/>
+          <rect x="98" y="75" width="7" height="15" fill="#5a7a9e"/>
+          <rect x="98" y="105" width="7" height="14" fill="#5a7a9e"/>
+          <text x="102" y="140" fill="#5a7a9e" font-size="9" text-anchor="middle">陽極狹縫</text>
+          <!-- electric plates -->
+          <rect x="160" y="62" width="120" height="8" rx="2" fill="#4f9cf9" opacity=".75"/>
+          <rect x="160" y="125" width="120" height="8" rx="2" fill="#ff6b6b" opacity=".75"/>
+          <text x="220" y="57" fill="#4f9cf9" font-size="10" text-anchor="middle">＋ 負極板 (E向下)</text>
+          <text x="220" y="148" fill="#ff6b6b" font-size="10" text-anchor="middle">－ 正極板</text>
+          <!-- B field -->
+          <text x="193" y="96" fill="#a78bfa" font-size="13" text-anchor="middle">×</text>
+          <text x="220" y="96" fill="#a78bfa" font-size="13" text-anchor="middle">×</text>
+          <text x="247" y="96" fill="#a78bfa" font-size="13" text-anchor="middle">×</text>
+          <text x="193" y="112" fill="#a78bfa" font-size="13" text-anchor="middle">×</text>
+          <text x="220" y="112" fill="#a78bfa" font-size="13" text-anchor="middle">×</text>
+          <text x="247" y="112" fill="#a78bfa" font-size="13" text-anchor="middle">×</text>
+          <text x="220" y="170" fill="#a78bfa" font-size="10" text-anchor="middle">磁場 B（向紙面內）</text>
+          <!-- beam line -->
+          <line x1="36" y1="97" x2="160" y2="97" stroke="#7bc5ff" stroke-width="2.5" stroke-dasharray="5,3"/>
+          <line x1="280" y1="97" x2="400" y2="97" stroke="#7bc5ff" stroke-width="2.5"/>
+          <text x="340" y="88" fill="#7bc5ff" font-size="10" text-anchor="middle">直線前進 →</text>
+          <!-- forces -->
+          <path d="M162 95 L162 78" stroke="#4f9cf9" stroke-width="2" marker-end="url(#a1)"/>
+          <text x="152" y="88" fill="#4f9cf9" font-size="9">F_E↑</text>
+          <path d="M278 99 L278 116" stroke="#ff6b6b" stroke-width="2" marker-end="url(#a3)"/>
+          <text x="267" y="113" fill="#ff6b6b" font-size="9">F_B↓</text>
+          <!-- screen -->
+          <rect x="500" y="60" width="10" height="75" rx="2" fill="#2dd4bf" opacity=".6"/>
+          <circle cx="505" cy="97" r="5" fill="#f5c842" opacity=".9"/>
+          <text x="505" y="148" fill="#2dd4bf" font-size="9" text-anchor="middle">螢光幕</text>
+          <!-- HV source symbol -->
+          <text x="430" y="100" fill="#9ab0cc" font-size="9">萬伏高壓</text>
+        </svg>
+        <p class="diag-label">速度選擇器：電場力（向上）與磁力（向下）平衡，陰極射線不偏折直線前進</p>
+      </div>
+    </div>
+
+    <!-- Derivation -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(61,214,140,.15)">📐</span>公式推導</div>
+      <div class="deriv">
+        <h4>① 速度選擇器（求 v₀）</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>電場力（向上）：<span class="seq">F_E = eE</span></span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>磁力（向下）：<span class="seq">F_B = ev₀B</span></span></div>
+        <div class="deriv-step"><span class="sn">3</span><span>平衡條件 F_E = F_B：<span class="seq">eE = ev₀B</span></span></div>
+        <div class="deriv-step"><span class="sn">4</span><span>消去 e 得：<span class="seq">v₀ = E / B</span></span></div>
+      </div>
+      <div class="fbox"><span class="fn">速度選擇器</span>v₀ = E / B</div>
+
+      <div class="deriv" style="margin-top:.8rem">
+        <h4>② 偏移量計算荷質比（求 e/m）</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>關閉磁場，只留電場，電子作拋物線運動</span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>x 方向等速：<span class="seq">t = d / v₀</span>（d = 板寬）</span></div>
+        <div class="deriv-step"><span class="sn">3</span><span>y 方向加速：<span class="seq">a_y = eE/m，y₁ = ½a_y t²</span></span></div>
+        <div class="deriv-step"><span class="sn">4</span><span>離開電場後等速：<span class="seq">y₂ = v_y · (D/v₀)</span></span></div>
+        <div class="deriv-step"><span class="sn">5</span><span>總偏移 y = y₁+y₂，整理得：</span></div>
+      </div>
+      <div class="fbox"><span class="fn">荷質比</span>e/m = 2v₀²y / [Ed(d+2D)]</div>
+      <div class="fbox sm" style="margin-top:.5rem"><span class="fn">公認值</span>e/m = 1.76 × 10¹¹ C/kg</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 03 MILLIKAN -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="millikan">
+  <div class="sec-header"><span class="sec-num">03</span><h2 class="sec-title">密立坎油滴實驗</h2><div class="sec-line"></div></div>
+
+  <div class="notice ni" style="margin-bottom:1.5rem">
+    <strong>🔬 實驗背景與意義</strong>
+    湯姆森測出了電子的荷質比，但無法單獨確定電荷量與質量。美國科學家密立坎從 1909 年起，花近十年時間進行油滴實驗，精確測定電子的電荷量。
+    實驗方法是讓帶電小油滴在平行板電場中懸浮或以不同速度運動，透過測量終端速度推算油滴電荷，反覆測量不同油滴，發現所有電荷量皆為同一最小值的整數倍。
+    這個最小值即為基本電量 e，確立了「<strong>電荷量子化</strong>」的概念，密立坎因此獲得 1923 年諾貝爾物理獎。
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(245,200,66,.15)">🔋</span>實驗裝置與受力分析</div>
+      <div class="diag">
+        <svg viewBox="0 0 400 230" width="100%" style="max-height:215px">
+          <defs>
+            <marker id="am" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#3dd68c"/></marker>
+            <marker id="am2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#ff6b6b"/></marker>
+            <marker id="am3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#a78bfa"/></marker>
+          </defs>
+          <!-- plates -->
+          <rect x="50" y="28" width="250" height="16" rx="3" fill="#4f9cf9" opacity=".5"/>
+          <text x="175" y="22" fill="#4f9cf9" font-size="10" text-anchor="middle">＋ 上極板</text>
+          <rect x="50" y="186" width="250" height="16" rx="3" fill="#ff6b6b" opacity=".5"/>
+          <text x="175" y="217" fill="#ff6b6b" font-size="10" text-anchor="middle">－ 下極板</text>
+          <!-- E field lines -->
+          <line x1="115" y1="44" x2="115" y2="186" stroke="#1a2740" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="175" y1="44" x2="175" y2="186" stroke="#1a2740" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="235" y1="44" x2="235" y2="186" stroke="#1a2740" stroke-width="1" stroke-dasharray="3,3"/>
+          <!-- oil drop -->
+          <circle cx="175" cy="115" r="16" fill="rgba(245,180,50,.2)" stroke="#f5c842" stroke-width="2"/>
+          <text x="175" y="119" fill="#f5c842" font-size="10" text-anchor="middle">−q</text>
+          <!-- forces -->
+          <path d="M175 99 L175 75" stroke="#3dd68c" stroke-width="2.5" marker-end="url(#am)"/>
+          <text x="185" y="86" fill="#3dd68c" font-size="10">qE↑</text>
+          <path d="M175 131 L175 155" stroke="#ff6b6b" stroke-width="2.5" marker-end="url(#am2)"/>
+          <text x="185" y="147" fill="#ff6b6b" font-size="10">mg↓</text>
+          <path d="M160 115 L138 115" stroke="#a78bfa" stroke-width="2" marker-end="url(#am3)"/>
+          <text x="118" y="111" fill="#a78bfa" font-size="9">f（阻力）</text>
+          <!-- sprayer -->
+          <ellipse cx="50" cy="36" rx="16" ry="10" fill="rgba(79,156,249,.12)" stroke="#4f9cf9" stroke-width="1.5"/>
+          <text x="50" y="40" fill="#4f9cf9" font-size="8" text-anchor="middle">噴霧</text>
+          <!-- balance equation -->
+          <rect x="310" y="80" width="80" height="70" rx="6" fill="rgba(61,214,140,.06)" stroke="rgba(61,214,140,.2)" stroke-width="1"/>
+          <text x="350" y="100" fill="#9ab0cc" font-size="9" text-anchor="middle">平衡時</text>
+          <text x="350" y="115" fill="#3dd68c" font-size="10" text-anchor="middle">qE = mg+f'</text>
+          <text x="350" y="132" fill="#9ab0cc" font-size="8" text-anchor="middle">（向上加速時）</text>
+          <text x="350" y="144" fill="#f5c842" font-size="8" text-anchor="middle">mg = f （無電場）</text>
+        </svg>
+        <p class="diag-label">無電場：終端速度 v（重力 = 阻力）；有電場：新終端速度 v'（qE = mg + f'）</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(61,214,140,.15)">📐</span>公式推導與實驗結果</div>
+      <div class="deriv">
+        <h4>① 無電場（測油滴重量）</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>斷路 S，油滴在重力下加速，最終達終端速度 v</span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>終端條件：<span class="seq">mg = f（空氣阻力）</span></span></div>
+        <div class="deriv-step"><span class="sn">3</span><span>由斯托克定律：<span class="seq">f = 6πηrv</span>（η：黏度，r：半徑）</span></div>
+      </div>
+      <div class="deriv" style="margin-top:.6rem">
+        <h4>② 有電場（求電荷量）</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>接通電路，油滴向上加速，達新終端速度 v'</span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>新終端條件：<span class="seq">qE = mg + f'</span></span></div>
+        <div class="deriv-step"><span class="sn">3</span><span>聯立兩式消去 mg，可求出電荷量 q</span></div>
+        <div class="deriv-step"><span class="sn">4</span><span>反覆測量不同油滴，發現 q 皆為 e 的整數倍</span></div>
+      </div>
+      <div class="fbox"><span class="fn">基本電量</span>e = 1.602 × 10⁻¹⁹ C ≈ 1.60 × 10⁻¹⁹ C</div>
+      <div class="fbox sm" style="margin-top:.5rem"><span class="fn">電子質量（由荷質比推算）</span>m = e ÷ (e/m) ≈ 9.11 × 10⁻³¹ kg</div>
+      <div class="notice ng" style="margin-top:.8rem">
+        <strong>⚡ 電荷量子化</strong>
+        任何物體的電荷量必為 e 的整數倍（ne），電荷不可無限細分。這是量子化概念在電量上的首次確認。
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 04 X-RAY -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="xray">
+  <div class="sec-header"><span class="sec-num">04</span><h2 class="sec-title">X 射線：發現、產生與布拉格繞射</h2><div class="sec-line"></div></div>
+
+  <div class="notice ni" style="margin-bottom:1.5rem">
+    <strong>🔬 實驗背景與意義</strong>
+    1895 年，德國物理學家倫琴（命琴）在研究陰極射線時，意外發現一種新型輻射能穿透紙張和肌肉，使感光底片曝光——他將其命名為「X 射線」，因其性質當時尚屬未知。
+    1912 年，勞厄以 X 射線照射晶體，得到清晰繞射圖案，證明 X 射線是波長極短（0.01～10 nm）的電磁波，並可用於分析晶體原子結構。
+    布拉格父子進一步建立定量繞射公式（布拉格定律），兩人因此共同獲得 1915 年諾貝爾物理獎，X 射線晶體學自此成為材料科學的重要工具。
+  </div>
+
+  <div class="g2" style="margin-bottom:1.4rem">
+    <!-- Production -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(167,139,250,.15)">⚡</span>X 射線的產生</div>
+      <div class="diag">
+        <svg viewBox="0 0 450 175" width="100%" style="max-height:162px">
+          <defs><marker id="xarr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#f5c842"/></marker></defs>
+          <!-- tube -->
+          <ellipse cx="80" cy="88" rx="38" ry="55" fill="none" stroke="#1a2740" stroke-width="2"/>
+          <ellipse cx="360" cy="88" rx="38" ry="55" fill="none" stroke="#1a2740" stroke-width="2"/>
+          <line x1="80" y1="33" x2="360" y2="33" stroke="#1a2740" stroke-width="2"/>
+          <line x1="80" y1="143" x2="360" y2="143" stroke="#1a2740" stroke-width="2"/>
+          <!-- cathode -->
+          <path d="M58 72 Q63 80 58 88 Q63 96 58 104" stroke="#7bc5ff" stroke-width="3" fill="none"/>
+          <text x="50" y="158" fill="#7bc5ff" font-size="9" text-anchor="middle">陰極</text>
+          <!-- anode target -->
+          <rect x="316" y="65" width="22" height="46" rx="3" fill="#5a7a9e" opacity=".85"/>
+          <text x="327" y="158" fill="#5a7a9e" font-size="9" text-anchor="middle">靶材</text>
+          <!-- electron beam -->
+          <line x1="74" y1="88" x2="310" y2="88" stroke="#4f9cf9" stroke-width="2.5" stroke-dasharray="5,3"/>
+          <polygon points="308,83 322,88 308,93" fill="#4f9cf9"/>
+          <text x="190" y="80" fill="#4f9cf9" font-size="9" text-anchor="middle">高速電子束（數萬 eV）</text>
+          <!-- X-rays -->
+          <line x1="325" y1="88" x2="415" y2="45" stroke="#f5c842" stroke-width="2.5" marker-end="url(#xarr)"/>
+          <line x1="325" y1="88" x2="420" y2="88" stroke="#f5c842" stroke-width="2.5" marker-end="url(#xarr)"/>
+          <line x1="325" y1="88" x2="415" y2="131" stroke="#f5c842" stroke-width="2.5" marker-end="url(#xarr)"/>
+          <text x="422" y="44" fill="#f5c842" font-size="10">X射線</text>
+          <!-- step labels -->
+          <rect x="30" y="14" width="52" height="16" rx="4" fill="rgba(79,156,249,.1)" stroke="rgba(79,156,249,.25)" stroke-width="1"/>
+          <text x="56" y="25" fill="#7bc5ff" font-size="8" text-anchor="middle">①加速電子</text>
+          <rect x="280" y="14" width="72" height="16" rx="4" fill="rgba(245,200,66,.1)" stroke="rgba(245,200,66,.25)" stroke-width="1"/>
+          <text x="316" y="25" fill="#f5c842" font-size="8" text-anchor="middle">②急減速→放出X射線</text>
+        </svg>
+        <p class="diag-label">電子動能（eV）在撞靶瞬間轉換為電磁波能量，產生波長極短的 X 射線</p>
+      </div>
+      <div class="steps">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-content"><h4>加速電子</h4><p>高電壓（萬伏特）將陰極電子加速，轉換電位能為動能：eV = ½mv²</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-content"><h4>撞擊金屬靶急遽減速</h4><p>電子撞擊正極靶材，在極短時間內急遽減速，損失的動能以電磁波形式釋出</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div class="step-content"><h4>放出 X 射線</h4><p>所產生的電磁波波長極短（0.01～10 nm），即 X 射線；不帶電，不受電磁場偏折</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bragg diffraction -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(61,214,140,.15)">🔬</span>布拉格晶體繞射</div>
+      <div class="diag">
+        <svg viewBox="0 0 470 215" width="100%" style="max-height:200px">
+          <defs>
+            <marker id="ds1" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M5,0 L5,5 L0,2.5 z" fill="#f5c842"/></marker>
+            <marker id="de1" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto"><path d="M0,0 L0,5 L5,2.5 z" fill="#f5c842"/></marker>
+          </defs>
+          <!-- crystal layers -->
+          <line x1="20" y1="62" x2="445" y2="62" stroke="#1a2740" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="20" y1="112" x2="445" y2="112" stroke="#1a2740" stroke-width="1" stroke-dasharray="3,3"/>
+          <line x1="20" y1="162" x2="445" y2="162" stroke="#1a2740" stroke-width="1" stroke-dasharray="3,3"/>
+          <!-- atoms L1 -->
+          <circle cx="80" cy="62" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="160" cy="62" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="240" cy="62" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="320" cy="62" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="400" cy="62" r="7" fill="#4f9cf9" opacity=".85"/>
+          <!-- atoms L2 -->
+          <circle cx="80" cy="112" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="160" cy="112" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="240" cy="112" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="320" cy="112" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="400" cy="112" r="7" fill="#4f9cf9" opacity=".85"/>
+          <!-- atoms L3 -->
+          <circle cx="80" cy="162" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="160" cy="162" r="7" fill="#4f9cf9" opacity=".85"/>
+          <circle cx="240" cy="162" r="7" fill="#4f9cf9" opacity=".85"/>
+          <!-- d spacing -->
+          <line x1="440" y1="62" x2="440" y2="112" stroke="#f5c842" stroke-width="1.5" marker-start="url(#ds1)" marker-end="url(#de1)"/>
+          <text x="450" y="90" fill="#f5c842" font-size="13" font-weight="bold">d</text>
+          <!-- incident beam 1 -->
+          <line x1="38" y1="22" x2="160" y2="62" stroke="#ff6b6b" stroke-width="2.5"/>
+          <line x1="160" y1="62" x2="282" y2="22" stroke="#ff6b6b" stroke-width="2.5"/>
+          <!-- incident beam 2 -->
+          <line x1="58" y1="38" x2="160" y2="112" stroke="#ff6b6b" stroke-width="2" opacity=".65"/>
+          <line x1="118" y1="38" x2="240" y2="112" stroke="#ff6b6b" stroke-width="2" opacity=".65"/>
+          <line x1="160" y1="112" x2="262" y2="38" stroke="#ff6b6b" stroke-width="2" opacity=".65"/>
+          <line x1="240" y1="112" x2="362" y2="38" stroke="#ff6b6b" stroke-width="2" opacity=".65"/>
+          <!-- theta arc -->
+          <path d="M140 62 A22 22 0 0 1 160 40" fill="none" stroke="#f5c842" stroke-width="1.5"/>
+          <text x="137" y="55" fill="#f5c842" font-size="11">θ</text>
+          <!-- path diff -->
+          <path d="M160 69 L200 112" stroke="#3dd68c" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <path d="M160 69 L120 112" stroke="#3dd68c" stroke-width="1.2" stroke-dasharray="2,2"/>
+          <text x="168" y="92" fill="#3dd68c" font-size="9.5">d sinθ</text>
+          <text x="100" y="92" fill="#3dd68c" font-size="9.5">d sinθ</text>
+          <!-- wavelength wave -->
+          <path d="M44 18 Q49 11 54 18 Q59 25 64 18" stroke="#a78bfa" stroke-width="1.5" fill="none"/>
+          <text x="54" y="10" fill="#a78bfa" font-size="9" text-anchor="middle">λ</text>
+          <!-- bottom label -->
+          <text x="235" y="200" fill="#9ab0cc" font-size="10" text-anchor="middle">光程差 = 2d sinθ，等於 nλ 時發生建設性干涉</text>
+        </svg>
+        <p class="diag-label">θ 為掠射角（射線與晶面的夾角），非入射角！兩條光路的光程差為 2d sinθ</p>
+      </div>
+      <div class="fbox"><span class="fn">布拉格定律</span>2d sinθ = nλ　（n = 1, 2, 3…）</div>
+      <div class="notice nw" style="margin-top:.7rem">
+        <strong>⚠ 布拉格定律推導邏輯</strong>
+        第二層原子的 X 射線需多走 2d sinθ 的路程。若此光程差恰好等於波長的整數倍（nλ），兩道反射光的波峰重合，發生<strong>建設性干涉</strong>（亮紋）；否則相消。
+      </div>
+    </div>
+  </div>
+
+  <!-- X-ray Applications -->
+  <div class="card">
+    <div class="card-title">🌐 X 射線的實際應用</div>
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="aico">🦷</div>
+        <h4>醫學影像（X 光片 / CT）</h4>
+        <p>X 射線能穿透肌肉但被骨骼吸收，各組織吸收率不同，可在底片上產生明暗對比。現代 CT（電腦斷層）整合不同角度的 X 光片，重建三維立體影像，大幅提升診斷精度。</p>
+      </div>
+      <div class="app-card">
+        <div class="aico">🛄</div>
+        <h4>機場安全檢查</h4>
+        <p>機場行李掃描機使用兩束能量不同的 X 射線，辨識不同材質：有機物呈橘色、金屬呈藍綠色、不可穿透物呈黑色，無需開箱即可識別危險物品。</p>
+      </div>
+      <div class="app-card">
+        <div class="aico">🔬</div>
+        <h4>晶體結構分析（X 射線繞射）</h4>
+        <p>利用布拉格定律，由繞射角推算晶格間距，進而確定晶體原子排列。DNA 雙螺旋結構的發現正是依賴 X 射線繞射圖，是 20 世紀最重要的科學成就之一。</p>
+      </div>
+      <div class="app-card">
+        <div class="aico">🏭</div>
+        <h4>工業非破壞性檢測（NDT）</h4>
+        <p>X 射線可穿透金屬焊接件，偵測內部裂縫、氣泡等缺陷，而不破壞工件本身。廣泛應用於航空零件、橋樑結構、核電廠設備的品質管控。</p>
+      </div>
+      <div class="app-card">
+        <div class="aico">⚗️</div>
+        <h4>X 射線螢光分析（XRF）</h4>
+        <p>X 射線激發樣品中原子發出特徵螢光 X 射線，由光譜判別元素組成，可快速分析礦石、文物、土壤的元素含量，且通常不損傷樣品。</p>
+      </div>
+      <div class="app-card">
+        <div class="aico">☀️</div>
+        <h4>天文觀測（X 射線望遠鏡）</h4>
+        <p>高能天體（黑洞、中子星、超新星殘骸）會放出大量 X 射線。由於地球大氣吸收 X 射線，需用太空望遠鏡（如錢卓 X 射線天文台）在大氣層外觀測這些極端天體。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 05 BLACKBODY -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="blackbody">
+  <div class="sec-header"><span class="sec-num">05</span><h2 class="sec-title">黑體輻射、空腔輻射與普朗克量子論</h2><div class="sec-line"></div></div>
+
+  <div class="notice ni" style="margin-bottom:1.5rem">
+    <strong>🔬 背景：為什麼需要黑體輻射理論？</strong>
+    任何溫度高於 0 K 的物體都會放出電磁波（熱輻射），但其輻射強度分布的形狀，依材質、表面狀態的不同而各異，難以建立統一理論。
+    科學家為了排除材質影響，設想一種「理想吸收體」——黑體：能完全吸收所有外來輻射，其輻射強度分布純粹由溫度決定。
+    古典物理嘗試解釋黑體輻射曲線，在長波段尚可，但在短波段預測輻射強度趨近無窮大，與實驗嚴重矛盾，這個困境稱為「<strong>紫外災變</strong>」，最終由普朗克在 1900 年引入量子化概念解決，開創了量子力學。
+  </div>
+
+  <div class="g2" style="margin-bottom:1.4rem">
+    <!-- Cavity radiation diagram -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(245,200,66,.15)">📦</span>黑體與空腔輻射</div>
+      <div class="diag">
+        <svg viewBox="0 0 380 200" width="100%" style="max-height:185px">
+          <!-- cavity sphere -->
+          <circle cx="130" cy="100" r="70" fill="rgba(15,21,34,.8)" stroke="#213350" stroke-width="2"/>
+          <!-- inner reflection lines -->
+          <line x1="90" y1="65" x2="150" y2="130" stroke="#f5c842" stroke-width="1.5" opacity=".5"/>
+          <polygon points="148,127 155,136 145,133" fill="#f5c842" opacity=".5"/>
+          <line x1="155" y1="128" x2="90" y2="145" stroke="#f5c842" stroke-width="1.5" opacity=".5"/>
+          <polygon points="93,143 84,147 88,138" fill="#f5c842" opacity=".5"/>
+          <line x1="92" y1="143" x2="135" y2="75" stroke="#f5c842" stroke-width="1.5" opacity=".5"/>
+          <polygon points="133,78 140,68 143,79" fill="#f5c842" opacity=".5"/>
+          <line x1="138" y1="70" x2="170" y2="118" stroke="#f5c842" stroke-width="1.5" opacity=".5"/>
+          <polygon points="168,115 176,124 165,122" fill="#f5c842" opacity=".5"/>
+          <!-- small hole -->
+          <rect x="196" y="93" width="8" height="14" rx="1" fill="var(--bg)"/>
+          <text x="208" y="104" fill="#f5c842" font-size="10">小孔</text>
+          <!-- outgoing radiation -->
+          <line x1="204" y1="97" x2="240" y2="78" stroke="#f5c842" stroke-width="2"/>
+          <line x1="204" y1="100" x2="245" y2="100" stroke="#f5c842" stroke-width="2"/>
+          <line x1="204" y1="103" x2="240" y2="122" stroke="#f5c842" stroke-width="2"/>
+          <polygon points="237,75 246,74 242,84" fill="#f5c842"/>
+          <polygon points="242,96 252,100 242,104" fill="#f5c842"/>
+          <polygon points="237,120 246,126 240,129" fill="#f5c842"/>
+          <text x="260" y="100" fill="#f5c842" font-size="9">空腔輻射</text>
+          <text x="260" y="112" fill="#9ab0cc" font-size="8">= 黑體輻射</text>
+          <!-- labels -->
+          <text x="130" y="155" fill="#9ab0cc" font-size="9" text-anchor="middle">空腔內壁（熱平衡）</text>
+          <text x="130" y="167" fill="#9ab0cc" font-size="8" text-anchor="middle">電磁波多次反射後完全被吸收</text>
+          <!-- incoming absorbed -->
+          <line x1="60" y1="80" x2="78" y2="88" stroke="#a78bfa" stroke-width="1.5" stroke-dasharray="3,2"/>
+          <text x="38" y="78" fill="#a78bfa" font-size="8">外來輻射</text>
+          <text x="38" y="88" fill="#a78bfa" font-size="8">完全吸收</text>
+          <!-- temperature label -->
+          <text x="105" y="108" fill="#f5c842" font-size="9" text-anchor="middle">溫度 T</text>
+        </svg>
+        <p class="diag-label">有小孔的空腔可視為理想黑體：進入的輻射幾乎不可能反射出來，能量被完全吸收</p>
+      </div>
+      <div class="steps" style="margin-top:.5rem">
+        <div class="step-row">
+          <div class="step-num">1</div>
+          <div class="step-content"><h4>什麼是黑體？</h4><p>能完全吸收外來電磁輻射（吸收率 = 1），不反射任何光；不一定是黑色（如恆星即被視為黑體）</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">2</div>
+          <div class="step-content"><h4>什麼是空腔輻射？</h4><p>有小孔的空腔達熱平衡時，由小孔放出的電磁輻射即為黑體輻射，其能量分布僅與溫度有關，與腔壁材質無關</p></div>
+        </div>
+        <div class="step-row">
+          <div class="step-num">3</div>
+          <div class="step-content"><h4>為何恆星視為黑體？</h4><p>恆星表面放出的光幾乎全是自身熱輻射，反射外來光的比例極小，因此在天文學中視恆星為黑體，可由輻射峰值波長推算表面溫度</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blackbody spectrum -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(251,146,60,.15)">📊</span>黑體輻射曲線與紫外災變</div>
+      <div class="diag">
+        <svg viewBox="0 0 420 225" width="100%" style="max-height:210px">
+          <!-- axes -->
+          <line x1="48" y1="15" x2="48" y2="192" stroke="#3a4f70" stroke-width="2"/>
+          <line x1="38" y1="192" x2="405" y2="192" stroke="#3a4f70" stroke-width="2"/>
+          <text x="20" y="103" fill="#9ab0cc" font-size="9" text-anchor="middle" transform="rotate(-90,20,103)">輻射強度</text>
+          <text x="226" y="207" fill="#9ab0cc" font-size="9" text-anchor="middle">波長 λ (nm)</text>
+          <!-- ticks -->
+          <text x="115" y="201" fill="#5a7a9e" font-size="8" text-anchor="middle">400</text>
+          <text x="182" y="201" fill="#5a7a9e" font-size="8" text-anchor="middle">600</text>
+          <text x="249" y="201" fill="#5a7a9e" font-size="8" text-anchor="middle">800</text>
+          <text x="315" y="201" fill="#5a7a9e" font-size="8" text-anchor="middle">1000</text>
+          <text x="382" y="201" fill="#5a7a9e" font-size="8" text-anchor="middle">1200</text>
+          <!-- visible light band -->
+          <rect x="113" y="15" width="70" height="7" rx="2" fill="url(#vis2)" opacity=".55"/>
+          <defs><linearGradient id="vis2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#9400D3"/><stop offset="20%" stop-color="#0000FF"/><stop offset="40%" stop-color="#00FF00"/><stop offset="65%" stop-color="#FFFF00"/><stop offset="80%" stop-color="#FF7F00"/><stop offset="100%" stop-color="#FF0000"/></linearGradient></defs>
+          <text x="148" y="13" fill="#e8edf5" font-size="7.5" text-anchor="middle">可見光</text>
+          <!-- 7000K -->
+          <path d="M48,192 Q65,188 82,170 Q98,148 112,95 Q120,55 127,32 Q132,35 137,52 Q152,98 175,138 Q225,172 290,183 Q348,188 405,191" fill="none" stroke="#ff6b6b" stroke-width="2.5"/>
+          <!-- 6000K -->
+          <path d="M48,192 Q75,190 95,178 Q110,162 122,130 Q130,100 136,82 Q142,95 148,112 Q168,148 210,165 Q272,178 350,185 Q378,187 405,190" fill="none" stroke="#fb923c" stroke-width="2"/>
+          <!-- 5000K -->
+          <path d="M48,192 Q88,191 108,182 Q126,170 138,148 Q145,128 151,115 Q157,127 162,140 Q183,163 240,175 Q308,183 405,189" fill="none" stroke="#f5c842" stroke-width="2"/>
+          <!-- 4000K -->
+          <path d="M48,192 Q100,191 122,184 Q144,174 158,158 Q165,143 170,134 Q175,143 179,152 Q200,167 265,177 Q340,184 405,188" fill="none" stroke="#3dd68c" stroke-width="2"/>
+          <!-- UV catastrophe (classical) -->
+          <path d="M48,192 Q60,170 72,140 Q82,115 90,85 Q96,62 100,40 Q102,22 104,8" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-dasharray="6,4"/>
+          <!-- labels -->
+          <text x="392" y="152" fill="#ff6b6b" font-size="8">7000K</text>
+          <text x="392" y="163" fill="#fb923c" font-size="8">6000K</text>
+          <text x="392" y="173" fill="#f5c842" font-size="8">5000K</text>
+          <text x="392" y="184" fill="#3dd68c" font-size="8">4000K</text>
+          <text x="56" y="28" fill="#a78bfa" font-size="7.5">古典預測</text>
+          <text x="56" y="38" fill="#a78bfa" font-size="7.5">（紫外災變）</text>
+          <!-- Wien displacement arrows -->
+          <line x1="125" y1="35" x2="125" y2="192" stroke="#ff6b6b" stroke-width="1" stroke-dasharray="2,3" opacity=".5"/>
+          <text x="125" y="55" fill="#ff6b6b" font-size="7.5" text-anchor="middle">λ_max</text>
+          <!-- annotation -->
+          <text x="230" y="218" fill="#9ab0cc" font-size="8.5" text-anchor="middle">溫度↑ → 峰值↑，λ_max 往短波方向移動</text>
+        </svg>
+        <p class="diag-label">實線為量子理論預測（吻合實驗），紫色虛線為古典預測（紫外災變）</p>
+      </div>
+      <div class="fbox"><span class="fn">維因位移定律</span>λ_max · T = b　（b ≈ 2.9×10⁶ nm·K）</div>
+    </div>
+  </div>
+
+  <!-- Planck quantum -->
+  <div class="card">
+    <div class="card-title"><span class="icon" style="background:rgba(79,156,249,.15)">⚛</span>普朗克量子假設與能量量子化</div>
+    <div class="g2">
+      <div>
+        <p style="font-size:.87rem;color:var(--text2);margin-bottom:1rem">
+          普朗克假設空腔壁上的<strong>振子（電偶極）</strong>，吸收或放出的能量不是連續的，
+          只能是某一最小能量單位（能量量子 ε）的整數倍。
+          這個假設違背了古典物理「能量連續」的觀念，但完美解釋了黑體輻射曲線。
+        </p>
+        <div class="fbox"><span class="fn">能量量子</span>ε = hf</div>
+        <div class="fbox sm" style="margin-top:.6rem"><span class="fn">振子能量（量子化）</span>E = nhf　（n = 1, 2, 3…）</div>
+        <div class="fbox sm" style="margin-top:.6rem"><span class="fn">普朗克常數</span>h = 6.626 × 10⁻³⁴ J·s ≈ 6.63 × 10⁻³⁴ J·s</div>
+        <div class="notice np" style="margin-top:.8rem">
+          <strong>📅 量子論的誕生日</strong>
+          1900 年 12 月 14 日，普朗克在德國物理學會公開報告量子化假設。
+          這一天被稱為<strong>量子論的誕生日</strong>，也是近代物理與古典物理的分界。普朗克因此獲得 1918 年諾貝爾物理獎。
+        </div>
+      </div>
+      <div>
+        <div class="diag">
+          <svg viewBox="0 0 300 170" width="100%" style="max-height:155px">
+            <text x="150" y="14" fill="#9ab0cc" font-size="9.5" text-anchor="middle">能量量子化 vs 古典連續（示意）</text>
+            <!-- Classical: ramp -->
+            <text x="60" y="32" fill="#a78bfa" font-size="9">古典：能量連續</text>
+            <path d="M30 130 L120 50" stroke="#a78bfa" stroke-width="2.5"/>
+            <text x="75" y="148" fill="#a78bfa" font-size="8" text-anchor="middle">任意值均可</text>
+            <!-- Quantum: steps -->
+            <text x="215" y="32" fill="#3dd68c" font-size="9">量子：不連續能階</text>
+            <line x1="155" y1="130" x2="185" y2="130" stroke="#3dd68c" stroke-width="2.5"/>
+            <line x1="185" y1="130" x2="185" y2="110" stroke="#3dd68c" stroke-width="1.5"/>
+            <line x1="185" y1="110" x2="215" y2="110" stroke="#3dd68c" stroke-width="2.5"/>
+            <line x1="215" y1="110" x2="215" y2="90" stroke="#3dd68c" stroke-width="1.5"/>
+            <line x1="215" y1="90" x2="245" y2="90" stroke="#3dd68c" stroke-width="2.5"/>
+            <line x1="245" y1="90" x2="245" y2="70" stroke="#3dd68c" stroke-width="1.5"/>
+            <line x1="245" y1="70" x2="275" y2="70" stroke="#3dd68c" stroke-width="2.5"/>
+            <!-- labels on steps -->
+            <text x="170" y="143" fill="#3dd68c" font-size="7.5">hf</text>
+            <text x="200" y="123" fill="#3dd68c" font-size="7.5">2hf</text>
+            <text x="230" y="103" fill="#3dd68c" font-size="7.5">3hf</text>
+            <text x="260" y="83" fill="#3dd68c" font-size="7.5">4hf</text>
+            <text x="215" y="158" fill="#3dd68c" font-size="8" text-anchor="middle">只能整數倍跳躍</text>
+          </svg>
+          <p class="diag-label">古典物理允許任意能量值（斜面）；量子化後能量只能在離散能階上（階梯）</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 06 LENARD EXPERIMENT -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="lenard">
+  <div class="sec-header"><span class="sec-num">06</span><h2 class="sec-title">雷納的光電效應實驗</h2><div class="sec-line"></div></div>
+
+  <div class="notice ni" style="margin-bottom:1.5rem">
+    <strong>🔬 實驗背景與意義</strong>
+    1887 年赫茲首先觀察到紫外線照射電極可使放電更容易，後來的學者認為這正是光電效應的首次發現。
+    1902 年，德國科學家雷納（Philipp Lenard）設計精密的光電管實驗，系統化研究了光電效應，測量了光電流與電壓的關係，發現了「底限頻率」、「截止電壓」等重要現象，揭示出古典電磁波理論無法解釋的矛盾。
+    雷納的實驗為愛因斯坦 1905 年提出光量子論提供了最直接的實驗依據，雷納本人也因此獲得 1905 年諾貝爾物理獎。
+  </div>
+
+  <div class="g2" style="margin-bottom:1.4rem">
+    <!-- Setup diagram -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(61,214,140,.15)">💡</span>實驗裝置與電流電壓關係</div>
+      <div class="diag">
+        <svg viewBox="0 0 430 205" width="100%" style="max-height:190px">
+          <defs>
+            <marker id="ph1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#7bc5ff"/></marker>
+            <marker id="ph2" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L0,6 L6,3 z" fill="#3dd68c"/></marker>
+          </defs>
+          <!-- vacuum tube -->
+          <ellipse cx="160" cy="100" rx="120" ry="85" fill="rgba(13,17,32,.7)" stroke="#1a2740" stroke-width="2"/>
+          <!-- metal cathode -->
+          <rect x="52" y="75" width="38" height="50" rx="4" fill="#5a7a9e"/>
+          <text x="71" y="150" fill="#5a7a9e" font-size="9" text-anchor="middle">金屬靶</text>
+          <!-- collector -->
+          <rect x="224" y="78" width="18" height="44" rx="3" fill="#3dd68c" opacity=".75"/>
+          <text x="233" y="150" fill="#3dd68c" font-size="9" text-anchor="middle">收集極</text>
+          <!-- incident light waves -->
+          <path d="M8 88 Q13 81 18 88 Q23 95 28 88" stroke="#f5c842" stroke-width="2" fill="none"/>
+          <path d="M14 88 Q19 81 24 88 Q29 95 34 88" stroke="#f5c842" stroke-width="2" fill="none"/>
+          <line x1="30" y1="88" x2="52" y2="88" stroke="#f5c842" stroke-width="2.5" marker-end="url(#ph2)"/>
+          <text x="22" y="75" fill="#f5c842" font-size="9" text-anchor="middle">入射光</text>
+          <!-- photoelectrons -->
+          <circle cx="112" cy="85" r="4" fill="#7bc5ff"/>
+          <circle cx="122" cy="95" r="4" fill="#7bc5ff"/>
+          <circle cx="108" cy="105" r="4" fill="#7bc5ff"/>
+          <line x1="113" y1="83" x2="145" y2="73" stroke="#7bc5ff" stroke-width="1.5" marker-end="url(#ph1)"/>
+          <line x1="123" y1="93" x2="160" y2="84" stroke="#7bc5ff" stroke-width="1.5" marker-end="url(#ph1)"/>
+          <line x1="109" y1="103" x2="148" y2="100" stroke="#7bc5ff" stroke-width="1.5" marker-end="url(#ph1)"/>
+          <text x="148" y="65" fill="#7bc5ff" font-size="8.5">光電子</text>
+          <!-- circuit -->
+          <line x1="233" y1="78" x2="310" y2="78" stroke="#9ab0cc" stroke-width="1.5"/>
+          <line x1="310" y1="78" x2="310" y2="165" stroke="#9ab0cc" stroke-width="1.5"/>
+          <line x1="310" y1="165" x2="233" y2="165" stroke="#9ab0cc" stroke-width="1.5"/>
+          <rect x="290" y="105" width="40" height="28" rx="4" fill="none" stroke="#9ab0cc" stroke-width="1.5"/>
+          <text x="310" y="122" fill="#9ab0cc" font-size="9" text-anchor="middle">A 電流計</text>
+          <!-- voltage source -->
+          <line x1="71" y1="125" x2="71" y2="170" stroke="#9ab0cc" stroke-width="1.5"/>
+          <line x1="71" y1="170" x2="233" y2="170" stroke="#9ab0cc" stroke-width="1.5"/>
+          <rect x="30" y="145" width="42" height="32" rx="4" fill="none" stroke="#9ab0cc" stroke-width="1.5"/>
+          <text x="51" y="162" fill="#9ab0cc" font-size="9" text-anchor="middle">可調 V</text>
+          <!-- +- labels -->
+          <text x="51" y="143" fill="#4f9cf9" font-size="9" text-anchor="middle">+  −</text>
+          <text x="51" y="196" fill="#9ab0cc" font-size="8" text-anchor="middle">（順向/逆向可切換）</text>
+        </svg>
+        <p class="diag-label">光照射金屬靶，打出光電子形成光電流 I；可調電壓控制順向（加速）或逆向（阻止）</p>
+      </div>
+
+      <!-- Forward/Reverse voltage explanation -->
+      <div class="g2" style="gap:.8rem;margin-top:.8rem">
+        <div style="background:rgba(79,156,249,.06);border:1px solid rgba(79,156,249,.2);border-radius:8px;padding:1rem;">
+          <div style="font-size:.82rem;font-weight:700;color:var(--accent2);margin-bottom:.5rem">⬆ 順向電壓（正電壓）</div>
+          <p style="font-size:.8rem;color:var(--text2)">收集極接正極，對光電子有加速作用，協助更多電子到達收集極。電壓增大到某值時，幾乎所有光電子都被收集，光電流達<strong style="color:var(--green)">最大值（飽和電流）</strong>。</p>
+        </div>
+        <div style="background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.2);border-radius:8px;padding:1rem;">
+          <div style="font-size:.82rem;font-weight:700;color:var(--red);margin-bottom:.5rem">⬇ 逆向電壓（負電壓）</div>
+          <p style="font-size:.8rem;color:var(--text2)">收集極接負極，對光電子有阻擋作用，只有動能夠大的電子才能到達。電壓增大到<strong style="color:var(--red)">截止電壓 Vc</strong> 時，即使最快的電子也無法到達，光電流 = 0。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- I-V curve + 3 discoveries -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(251,146,60,.15)">📈</span>I–V 圖與三大發現</div>
+      <div class="diag">
+        <svg viewBox="0 0 400 220" width="100%" style="max-height:205px">
+          <!-- axes -->
+          <line x1="168" y1="18" x2="168" y2="196" stroke="#3a4f70" stroke-width="2"/>
+          <line x1="38" y1="196" x2="390" y2="196" stroke="#3a4f70" stroke-width="2"/>
+          <text x="392" y="200" fill="#9ab0cc" font-size="10">V</text>
+          <text x="172" y="14" fill="#9ab0cc" font-size="10">I</text>
+          <text x="168" y="210" fill="#5a7a9e" font-size="9" text-anchor="middle">0</text>
+          <!-- Vc markers -->
+          <line x1="88" y1="191" x2="88" y2="201" stroke="#ff6b6b" stroke-width="2"/>
+          <text x="88" y="213" fill="#ff6b6b" font-size="9" text-anchor="middle">-Vc</text>
+          <!-- high intensity -->
+          <path d="M88,196 Q100,194 110,188 Q128,175 150,158 Q163,143 170,118 L388,118" fill="none" stroke="#4f9cf9" stroke-width="2.5"/>
+          <!-- low intensity (same Vc!) -->
+          <path d="M88,196 Q100,194 110,191 Q128,183 150,172 Q163,160 170,148 L388,148" fill="none" stroke="#4f9cf9" stroke-width="2.5" stroke-dasharray="5,3"/>
+          <!-- saturation labels -->
+          <text x="385" y="115" fill="#4f9cf9" font-size="8.5" text-anchor="end">強度大 → 飽和電流大</text>
+          <text x="385" y="144" fill="#4f9cf9" font-size="8.5" text-anchor="end">強度小 → 飽和電流小</text>
+          <!-- different freq line -->
+          <line x1="54" y1="191" x2="54" y2="201" stroke="#a78bfa" stroke-width="2"/>
+          <text x="54" y="213" fill="#a78bfa" font-size="9" text-anchor="middle">-Vc'</text>
+          <path d="M54,196 Q72,194 90,190 Q118,180 145,165 Q162,152 170,132 L388,132" fill="none" stroke="#a78bfa" stroke-width="2" stroke-dasharray="4,3" opacity=".75"/>
+          <text x="385" y="129" fill="#a78bfa" font-size="8.5" text-anchor="end">頻率更高 → Vc 更大</text>
+          <!-- annotation: same Vc -->
+          <line x1="88" y1="148" x2="88" y2="118" stroke="#f5c842" stroke-width="1" stroke-dasharray="2,2"/>
+          <text x="68" y="133" fill="#f5c842" font-size="8" text-anchor="middle">截止電壓</text>
+          <text x="68" y="142" fill="#f5c842" font-size="8" text-anchor="middle">相同！</text>
+          <!-- x axis label -->
+          <text x="280" y="185" fill="#9ab0cc" font-size="8.5">← 逆向電壓 | 順向電壓 →</text>
+        </svg>
+        <p class="diag-label">相同頻率不同強度：截止電壓 Vc 相同（截距不變），飽和電流不同（水平段高度不同）</p>
+      </div>
+      <table class="tbl" style="font-size:.82rem;margin-top:.5rem">
+        <thead><tr><th>雷納的三大發現</th><th>古典理論預測</th><th>實驗結果</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>底限頻率</strong><br><span style="font-size:.78rem;color:var(--text3)">f &lt; f₀ 無光電流</span></td>
+            <td style="color:var(--red)">光夠強照夠久即可，無頻率限制</td>
+            <td style="color:var(--green)">只取決於頻率，與強度無關</td>
+          </tr>
+          <tr>
+            <td><strong>飽和電流</strong><br><span style="font-size:.78rem;color:var(--text3)">∝ 光強度</span></td>
+            <td style="color:var(--green)">光越強，電子越多（✓部分正確）</td>
+            <td style="color:var(--green)">飽和電流確實與光強度成正比</td>
+          </tr>
+          <tr>
+            <td><strong>最大動能</strong><br><span style="font-size:.78rem;color:var(--text3)">= eVc</span></td>
+            <td style="color:var(--red)">光越強，電子動能越大</td>
+            <td style="color:var(--green)">只與頻率有關，與強度無關</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 07 EINSTEIN PHOTON THEORY -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="einstein">
+  <div class="sec-header"><span class="sec-num">07</span><h2 class="sec-title">愛因斯坦光量子論</h2><div class="sec-line"></div></div>
+
+  <div class="notice np" style="margin-bottom:1.5rem">
+    <strong>🔬 理論背景與意義</strong>
+    1905 年，愛因斯坦受普朗克量子論啟發，大膽假設：光在傳播過程中本身也具有粒子性，不只在被吸收或放出時才量子化。他認為光是由一個個「光量子」（1926 年改稱光子）組成，每個光子攜帶固定能量 hf。
+    這個假設完美解釋了雷納實驗的所有奇異現象——底限頻率的存在、最大動能只與頻率有關、幾乎立即產生光電流等，但因為與「光是連續電磁波」的觀念衝突，初期並未被廣泛接受。
+    密立坎耗費近十年實驗驗證，最終證實了愛因斯坦的光電方程式；愛因斯坦因「發現光電效應定律」獲得 1921 年諾貝爾物理獎，而非因相對論，光子論的重要性由此可見一斑。
+  </div>
+
+  <div class="g2" style="margin-bottom:1.4rem">
+    <!-- Photon properties -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(167,139,250,.15)">☀</span>光子的基本性質</div>
+      <div class="diag">
+        <svg viewBox="0 0 400 180" width="100%" style="max-height:165px">
+          <!-- photon wave-particle -->
+          <text x="200" y="18" fill="#9ab0cc" font-size="10" text-anchor="middle">光子：波粒二象性</text>
+          <!-- wave part -->
+          <rect x="20" y="30" width="160" height="130" rx="8" fill="rgba(167,139,250,.06)" stroke="rgba(167,139,250,.2)" stroke-width="1"/>
+          <text x="100" y="50" fill="#a78bfa" font-size="9" text-anchor="middle">波動性</text>
+          <path d="M30 90 Q42 70 54 90 Q66 110 78 90 Q90 70 102 90 Q114 110 126 90 Q138 70 150 90 Q162 110 174 90" fill="none" stroke="#a78bfa" stroke-width="2.5"/>
+          <text x="100" y="118" fill="#a78bfa" font-size="9" text-anchor="middle">波長 λ，頻率 f</text>
+          <text x="100" y="130" fill="#9ab0cc" font-size="8" text-anchor="middle">c = λf（真空中光速）</text>
+          <text x="100" y="145" fill="#9ab0cc" font-size="8" text-anchor="middle">可發生干涉、繞射</text>
+          <!-- particle part -->
+          <rect x="220" y="30" width="160" height="130" rx="8" fill="rgba(245,200,66,.06)" stroke="rgba(245,200,66,.2)" stroke-width="1"/>
+          <text x="300" y="50" fill="#f5c842" font-size="9" text-anchor="middle">粒子性</text>
+          <circle cx="300" cy="90" r="22" fill="rgba(245,200,66,.15)" stroke="#f5c842" stroke-width="2"/>
+          <text x="300" y="87" fill="#f5c842" font-size="8" text-anchor="middle">能量</text>
+          <text x="300" y="97" fill="#f5c842" font-size="8" text-anchor="middle">E=hf</text>
+          <text x="300" y="118" fill="#a78bfa" font-size="9" text-anchor="middle">動量 p = h/λ</text>
+          <text x="300" y="130" fill="#9ab0cc" font-size="8" text-anchor="middle">靜止質量 = 0</text>
+          <text x="300" y="145" fill="#9ab0cc" font-size="8" text-anchor="middle">不帶電，速度恆為 c</text>
+        </svg>
+        <p class="diag-label">光子同時具有波動性（波長、頻率）和粒子性（能量、動量）——波粒二象性</p>
+      </div>
+      <div class="fbox"><span class="fn">光子能量</span>E = hf = hc / λ</div>
+      <div class="fbox sm" style="margin-top:.5rem"><span class="fn">光子動量（愛因斯坦由狹義相對論推導）</span>p = E/c = hf/c = h/λ</div>
+      <div class="notice ni" style="margin-top:.8rem">
+        <strong>💡 光強度的量子解釋</strong>
+        古典物理：強度 ∝ 振幅²（電場能量）<br>
+        量子理論：強度 = 單位時間單位面積的光子數 × hf<br>
+        即 <strong>I = nhf/A</strong>（n：每秒每單位面積通過的光子數）
+      </div>
+    </div>
+
+    <!-- Photoelectric equation + Vc-f graph -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(61,214,140,.15)">📐</span>光電方程式推導與 Vc–f 圖</div>
+      <div class="deriv">
+        <h4>愛因斯坦光電方程式推導</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>光子能量為 hf，撞擊金屬表面電子</span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>電子用部分能量克服功函數 W（脫離束縛）</span></div>
+        <div class="deriv-step"><span class="sn">3</span><span>剩餘能量成為光電子動能：<span class="seq">hf = W + K_max</span></span></div>
+        <div class="deriv-step"><span class="sn">4</span><span>截止電壓與最大動能的關係：<span class="seq">K_max = eVc</span></span></div>
+        <div class="deriv-step"><span class="sn">5</span><span>功函數與底限頻率：<span class="seq">W = hf₀ = hc/λ₀</span></span></div>
+      </div>
+      <div class="fbox"><span class="fn">光電效應方程式</span>K_max = hf − W = eVc</div>
+      <div class="diag" style="margin-top:.8rem">
+        <svg viewBox="0 0 370 185" width="100%" style="max-height:170px">
+          <!-- axes -->
+          <line x1="55" y1="18" x2="55" y2="168" stroke="#3a4f70" stroke-width="2"/>
+          <line x1="38" y1="110" x2="360" y2="110" stroke="#3a4f70" stroke-width="2"/>
+          <text x="363" y="114" fill="#9ab0cc" font-size="9">f</text>
+          <text x="58" y="14" fill="#9ab0cc" font-size="9">Vc</text>
+          <text x="55" y="124" fill="#5a7a9e" font-size="8" text-anchor="middle">0</text>
+          <!-- metal A (low W) -->
+          <line x1="110" y1="110" x2="350" y2="25" stroke="#4f9cf9" stroke-width="2.5"/>
+          <!-- metal B (medium W) -->
+          <line x1="155" y1="110" x2="350" y2="42" stroke="#fb923c" stroke-width="2.5"/>
+          <!-- metal C (high W) -->
+          <line x1="200" y1="110" x2="350" y2="60" stroke="#a78bfa" stroke-width="2.5"/>
+          <!-- f0 ticks -->
+          <line x1="110" y1="105" x2="110" y2="115" stroke="#4f9cf9" stroke-width="2"/>
+          <text x="110" y="126" fill="#4f9cf9" font-size="8" text-anchor="middle">f₀ₐ</text>
+          <line x1="155" y1="105" x2="155" y2="115" stroke="#fb923c" stroke-width="2"/>
+          <text x="155" y="126" fill="#fb923c" font-size="8" text-anchor="middle">f₀ᵦ</text>
+          <line x1="200" y1="105" x2="200" y2="115" stroke="#a78bfa" stroke-width="2"/>
+          <text x="200" y="126" fill="#a78bfa" font-size="8" text-anchor="middle">f₀꜀</text>
+          <!-- Vc intercepts -->
+          <line x1="50" y1="140" x2="60" y2="140" stroke="#4f9cf9" stroke-width="1.5"/>
+          <text x="44" y="143" fill="#4f9cf9" font-size="7.5" text-anchor="end">-Wₐ/e</text>
+          <line x1="50" y1="152" x2="60" y2="152" stroke="#fb923c" stroke-width="1.5"/>
+          <text x="44" y="155" fill="#fb923c" font-size="7.5" text-anchor="end">-Wᵦ/e</text>
+          <line x1="50" y1="163" x2="60" y2="163" stroke="#a78bfa" stroke-width="1.5"/>
+          <text x="44" y="166" fill="#a78bfa" font-size="7.5" text-anchor="end">-W꜀/e</text>
+          <!-- slope annotation -->
+          <text x="300" y="78" fill="#e8edf5" font-size="8.5">斜率皆 = h/e</text>
+          <text x="300" y="90" fill="#9ab0cc" font-size="8">（各金屬相同）</text>
+          <!-- labels -->
+          <text x="354" y="23" fill="#4f9cf9" font-size="9">A</text>
+          <text x="354" y="40" fill="#fb923c" font-size="9">B</text>
+          <text x="354" y="58" fill="#a78bfa" font-size="9">C</text>
+          <text x="190" y="178" fill="#9ab0cc" font-size="8.5" text-anchor="middle">斜率 h/e 可求普朗克常數；截距求 f₀ 和 W</text>
+        </svg>
+        <p class="diag-label">密立坎光電實驗：Vc 對 f 作圖，各金屬直線斜率相同均為 h/e，驗證愛因斯坦方程式</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ Vc-f GRAPH — FULL WIDTH ════ -->
+  <div class="card" style="margin-bottom:1.4rem">
+    <div class="card-title">
+      <span class="icon" style="background:rgba(79,156,249,.15)">📈</span>
+      密立坎 Vc–f 圖（截止電壓 vs 頻率）
+      <span class="tag tb" style="margin-left:.4rem;font-weight:400">圖一</span>
+    </div>
+
+    <div class="notice ni" style="margin-bottom:1.4rem">
+      <strong>📌 這張圖的來源</strong>
+      密立坎以<strong>不同頻率</strong>的單色光依序照射同一金屬，每次記錄對應的截止電壓 Vc，再換另一種金屬重複實驗。
+      以頻率 f 為橫軸、截止電壓 Vc 為縱軸作圖，每種金屬都得到一條直線。
+      這張圖直接驗證了愛因斯坦光電方程式，並讓我們能從圖形讀出普朗克常數 h、底限頻率 f₀ 和功函數 W。
+    </div>
+
+    <div class="g2" style="align-items:start">
+      <!-- Big graph -->
+      <div class="diag" style="padding:1.5rem 1.2rem">
+        <svg viewBox="0 0 580 370" width="100%">
+          <defs>
+            <marker id="vcax" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#3a4f70"/></marker>
+          </defs>
+
+          <!-- ── AXES ── -->
+          <line x1="90" y1="20" x2="90" y2="290" stroke="#3a4f70" stroke-width="2.5" marker-end="url(#vcax)"/>
+          <line x1="60" y1="195" x2="565" y2="195" stroke="#3a4f70" stroke-width="2.5" marker-end="url(#vcax)"/>
+          <text x="570" y="199" fill="#9ab0cc" font-size="13" font-weight="bold">f (Hz)</text>
+          <text x="94" y="16" fill="#9ab0cc" font-size="13" font-weight="bold">Vc (V)</text>
+          <text x="87" y="209" fill="#5a7a9e" font-size="11" text-anchor="end">0</text>
+
+          <!-- ── GRID LINES ── -->
+          <line x1="90" y1="255" x2="555" y2="255" stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="90" y1="315" x2="555" y2="315" stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="90" y1="135" x2="555" y2="135" stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="90" y1="75"  x2="555" y2="75"  stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+
+          <!-- ── METAL A（低功函數，f₀ 最小）── -->
+          <!-- line: passes through (160,195) and (540,35) → slope = (35-195)/(540-160) = -160/380 per px -->
+          <line x1="160" y1="195" x2="540" y2="35" stroke="#4f9cf9" stroke-width="3"/>
+          <!-- extend dashed below axis -->
+          <line x1="90"  y1="224" x2="160" y2="195" stroke="#4f9cf9" stroke-width="2" stroke-dasharray="5,3"/>
+
+          <!-- ── METAL B（中功函數）── -->
+          <line x1="230" y1="195" x2="540" y2="60" stroke="#fb923c" stroke-width="3"/>
+          <line x1="90"  y1="258" x2="230" y2="195" stroke="#fb923c" stroke-width="2" stroke-dasharray="5,3"/>
+
+          <!-- ── METAL C（高功函數）── -->
+          <line x1="310" y1="195" x2="540" y2="89" stroke="#a78bfa" stroke-width="3"/>
+          <line x1="90"  y1="296" x2="310" y2="195" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5,3"/>
+
+          <!-- ── f₀ TICKS ── -->
+          <line x1="160" y1="189" x2="160" y2="201" stroke="#4f9cf9" stroke-width="2.5"/>
+          <text x="160" y="216" fill="#4f9cf9" font-size="12" text-anchor="middle" font-weight="600">f₀ₐ</text>
+          <line x1="230" y1="189" x2="230" y2="201" stroke="#fb923c" stroke-width="2.5"/>
+          <text x="230" y="216" fill="#fb923c" font-size="12" text-anchor="middle" font-weight="600">f₀ᵦ</text>
+          <line x1="310" y1="189" x2="310" y2="201" stroke="#a78bfa" stroke-width="2.5"/>
+          <text x="310" y="216" fill="#a78bfa" font-size="12" text-anchor="middle" font-weight="600">f₀꜀</text>
+          <text x="235" y="232" fill="#f5c842" font-size="11" text-anchor="middle">← 底限頻率（x 截距）各金屬不同</text>
+
+          <!-- ── Y-INTERCEPTS ── -->
+          <line x1="84" y1="224" x2="96" y2="224" stroke="#4f9cf9" stroke-width="2.5"/>
+          <text x="80" y="228" fill="#4f9cf9" font-size="11" text-anchor="end">−Wₐ/e</text>
+          <line x1="84" y1="258" x2="96" y2="258" stroke="#fb923c" stroke-width="2.5"/>
+          <text x="80" y="262" fill="#fb923c" font-size="11" text-anchor="end">−Wᵦ/e</text>
+          <line x1="84" y1="296" x2="96" y2="296" stroke="#a78bfa" stroke-width="2.5"/>
+          <text x="80" y="300" fill="#a78bfa" font-size="11" text-anchor="end">−W꜀/e</text>
+          <text x="62" y="330" fill="#f5c842" font-size="10" text-anchor="middle">y截距</text>
+          <text x="62" y="342" fill="#f5c842" font-size="10" text-anchor="middle">= −W/e</text>
+
+          <!-- ── SLOPE ANNOTATION ── -->
+          <line x1="400" y1="106" x2="500" y2="106" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="500" y1="63"  x2="500" y2="106" stroke="#f5c842" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="450" y="100" fill="#f5c842" font-size="11" text-anchor="middle">Δ Vc</text>
+          <text x="515" y="87"  fill="#f5c842" font-size="11">Δf</text>
+          <rect x="370" y="118" width="140" height="28" rx="6" fill="rgba(245,200,66,.1)" stroke="rgba(245,200,66,.25)" stroke-width="1"/>
+          <text x="440" y="136" fill="#f5c842" font-size="13" text-anchor="middle" font-weight="700">斜率 = ΔVc/Δf = h/e</text>
+          <text x="440" y="153" fill="#9ab0cc" font-size="10" text-anchor="middle">各金屬直線斜率完全相同！</text>
+
+          <!-- ── LINE LABELS ── -->
+          <text x="544" y="33"  fill="#4f9cf9" font-size="13" font-weight="700">A</text>
+          <text x="544" y="58"  fill="#fb923c" font-size="13" font-weight="700">B</text>
+          <text x="544" y="87"  fill="#a78bfa" font-size="13" font-weight="700">C</text>
+
+          <!-- ── POSITIVE Vc region label ── -->
+          <text x="100" y="185" fill="#3dd68c" font-size="10">Vc &gt; 0（有截止電壓）</text>
+          <!-- ── NEGATIVE region note ── -->
+          <text x="100" y="248" fill="#9ab0cc" font-size="10">虛線延伸：f &lt; f₀ 時無光電效應</text>
+          <text x="100" y="261" fill="#9ab0cc" font-size="10">（截距以外的虛線無物理意義）</text>
+
+          <!-- ── CAPTION ── -->
+          <text x="330" y="358" fill="#9ab0cc" font-size="11" text-anchor="middle">三種不同金屬：平行直線（相同斜率 h/e），截距隨功函數 W 不同而不同</text>
+        </svg>
+        <p class="diag-label">Vc–f 圖：各金屬截線平行（斜率同為 h/e）；x 截距 = f₀；y 截距 = −W/e</p>
+      </div>
+
+      <!-- Right column: derivation + key points -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="deriv">
+          <h4>方程式推導（Vc–f 直線的由來）</h4>
+          <div class="deriv-step"><span class="sn">1</span><span>由光電方程式出發：<span class="seq">K_max = hf − W</span></span></div>
+          <div class="deriv-step"><span class="sn">2</span><span>代入截止電壓定義 K_max = eVc：<span class="seq">eVc = hf − W</span></span></div>
+          <div class="deriv-step"><span class="sn">3</span><span>兩邊同除以 e：<span class="seq">Vc = (h/e)·f − W/e</span></span></div>
+          <div class="deriv-step"><span class="sn">4</span><span>對應 y = mx + b 的直線方程，整理：</span></div>
+        </div>
+
+        <div class="fbox"><span class="fn">Vc–f 直線方程式</span>Vc = (h/e)·f − W/e</div>
+
+        <table class="tbl" style="font-size:.84rem">
+          <thead><tr><th>圖形特徵</th><th>物理量</th><th>計算方式</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--gold)">斜率</td><td>h/e（普朗克常數÷電量）</td><td>h = 斜率 × e</td></tr>
+            <tr><td style="color:var(--accent2)">x 軸截距</td><td>底限頻率 f₀</td><td>λ₀ = c/f₀</td></tr>
+            <tr><td style="color:var(--red)">y 軸截距</td><td>−W/e（功函數/電量）</td><td>W = |截距| × e</td></tr>
+            <tr><td style="color:var(--green)">兩金屬比較</td><td>斜率相同（h 不變）</td><td>x 截距大 → W 大</td></tr>
+          </tbody>
+        </table>
+
+        <div class="notice nw">
+          <strong>⚠ 常見陷阱 1</strong>
+          不同金屬的直線<strong>斜率完全相同</strong>（皆為 h/e），圖形上呈現一組平行線。斜率不同是<strong>錯誤</strong>的說法。
+        </div>
+        <div class="notice nw">
+          <strong>⚠ 常見陷阱 2</strong>
+          改變光的強度，<strong>不會改變直線上任何一個點的位置</strong>。Vc–f 圖只反映頻率與截止電壓的關係，光強度改變的是飽和電流（另一張圖）。
+        </div>
+        <div class="notice ng">
+          <strong>🎯 如何從圖讀出 h</strong>
+          取直線上兩個清楚的點 (f₁, Vc₁)、(f₂, Vc₂)，<br>
+          h = [(Vc₂ − Vc₁) / (f₂ − f₁)] × e<br>
+          代入 e = 1.6×10⁻¹⁹ C 即可。
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ Kmax-f GRAPH — FULL WIDTH ════ -->
+  <div class="card" style="margin-bottom:1.4rem">
+    <div class="card-title">
+      <span class="icon" style="background:rgba(61,214,140,.15)">📉</span>
+      K<sub>max</sub>–f 圖（最大動能 vs 頻率）
+      <span class="tag tg" style="margin-left:.4rem;font-weight:400">圖二</span>
+    </div>
+
+    <div class="notice ng" style="margin-bottom:1.4rem">
+      <strong>📌 與 Vc–f 圖的關係</strong>
+      K<sub>max</sub>–f 圖其實就是把 Vc–f 圖的縱軸乘以 e（因為 K<sub>max</sub> = eVc）。
+      兩張圖形狀完全相同（平行斜線、相同 x 截距），但斜率和 y 截距的「數值」不同：
+      斜率從 h/e 變成 h，y 截距從 −W/e 變成 −W，讀圖時要特別注意。
+    </div>
+
+    <div class="g2" style="align-items:start">
+      <!-- Big graph -->
+      <div class="diag" style="padding:1.5rem 1.2rem">
+        <svg viewBox="0 0 580 370" width="100%">
+          <defs>
+            <marker id="kmax_ax" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#3a4f70"/></marker>
+          </defs>
+
+          <!-- ── AXES ── -->
+          <line x1="90" y1="20" x2="90" y2="290" stroke="#3a4f70" stroke-width="2.5" marker-end="url(#kmax_ax)"/>
+          <line x1="60" y1="195" x2="565" y2="195" stroke="#3a4f70" stroke-width="2.5" marker-end="url(#kmax_ax)"/>
+          <text x="570" y="199" fill="#9ab0cc" font-size="13" font-weight="bold">f (Hz)</text>
+          <!-- y-axis label with subscript -->
+          <text x="94" y="16" fill="#9ab0cc" font-size="13" font-weight="bold">K</text>
+          <text x="107" y="20" fill="#9ab0cc" font-size="9">max</text>
+          <text x="122" y="16" fill="#9ab0cc" font-size="13" font-weight="bold"> (eV)</text>
+          <text x="87" y="209" fill="#5a7a9e" font-size="11" text-anchor="end">0</text>
+
+          <!-- ── GRID LINES ── -->
+          <line x1="90" y1="255" x2="555" y2="255" stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="90" y1="315" x2="555" y2="315" stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="90" y1="135" x2="555" y2="135" stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="90" y1="75"  x2="555" y2="75"  stroke="#1a2740" stroke-width="1" stroke-dasharray="4,4"/>
+
+          <!-- ── METAL A ── -->
+          <line x1="160" y1="195" x2="540" y2="35" stroke="#4f9cf9" stroke-width="3"/>
+          <line x1="90"  y1="224" x2="160" y2="195" stroke="#4f9cf9" stroke-width="2" stroke-dasharray="5,3"/>
+          <!-- ── METAL B ── -->
+          <line x1="230" y1="195" x2="540" y2="60" stroke="#fb923c" stroke-width="3"/>
+          <line x1="90"  y1="258" x2="230" y2="195" stroke="#fb923c" stroke-width="2" stroke-dasharray="5,3"/>
+          <!-- ── METAL C ── -->
+          <line x1="310" y1="195" x2="540" y2="89" stroke="#a78bfa" stroke-width="3"/>
+          <line x1="90"  y1="296" x2="310" y2="195" stroke="#a78bfa" stroke-width="2" stroke-dasharray="5,3"/>
+
+          <!-- ── f₀ TICKS ── -->
+          <line x1="160" y1="189" x2="160" y2="201" stroke="#4f9cf9" stroke-width="2.5"/>
+          <text x="160" y="216" fill="#4f9cf9" font-size="12" text-anchor="middle" font-weight="600">f₀ₐ</text>
+          <line x1="230" y1="189" x2="230" y2="201" stroke="#fb923c" stroke-width="2.5"/>
+          <text x="230" y="216" fill="#fb923c" font-size="12" text-anchor="middle" font-weight="600">f₀ᵦ</text>
+          <line x1="310" y1="189" x2="310" y2="201" stroke="#a78bfa" stroke-width="2.5"/>
+          <text x="310" y="216" fill="#a78bfa" font-size="12" text-anchor="middle" font-weight="600">f₀꜀</text>
+          <text x="235" y="232" fill="#f5c842" font-size="11" text-anchor="middle">← x 截距 = f₀（與 Vc–f 圖相同）</text>
+
+          <!-- ── Y-INTERCEPTS（now = −W, not −W/e）── -->
+          <line x1="84" y1="224" x2="96" y2="224" stroke="#4f9cf9" stroke-width="2.5"/>
+          <text x="80" y="228" fill="#4f9cf9" font-size="11" text-anchor="end">−Wₐ</text>
+          <line x1="84" y1="258" x2="96" y2="258" stroke="#fb923c" stroke-width="2.5"/>
+          <text x="80" y="262" fill="#fb923c" font-size="11" text-anchor="end">−Wᵦ</text>
+          <line x1="84" y1="296" x2="96" y2="296" stroke="#a78bfa" stroke-width="2.5"/>
+          <text x="80" y="300" fill="#a78bfa" font-size="11" text-anchor="end">−W꜀</text>
+          <text x="60" y="330" fill="#3dd68c" font-size="10" text-anchor="middle">y截距</text>
+          <text x="60" y="342" fill="#3dd68c" font-size="10" text-anchor="middle">= −W</text>
+          <text x="60" y="354" fill="#9ab0cc" font-size="9" text-anchor="middle">（直接是功函數）</text>
+
+          <!-- ── SLOPE ANNOTATION（now = h）── -->
+          <line x1="400" y1="106" x2="500" y2="106" stroke="#3dd68c" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <line x1="500" y1="63"  x2="500" y2="106" stroke="#3dd68c" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="450" y="100" fill="#3dd68c" font-size="11" text-anchor="middle">ΔK</text>
+          <text x="515" y="87"  fill="#3dd68c" font-size="11">Δf</text>
+          <rect x="350" y="118" width="160" height="28" rx="6" fill="rgba(61,214,140,.08)" stroke="rgba(61,214,140,.25)" stroke-width="1"/>
+          <text x="430" y="136" fill="#3dd68c" font-size="13" text-anchor="middle" font-weight="700">斜率 = ΔK/Δf = h</text>
+          <text x="430" y="153" fill="#9ab0cc" font-size="10" text-anchor="middle">斜率直接就是普朗克常數 h ！</text>
+
+          <!-- Highlight: difference from Vc-f -->
+          <rect x="100" y="50" width="220" height="38" rx="7" fill="rgba(245,200,66,.07)" stroke="rgba(245,200,66,.3)" stroke-width="1.5"/>
+          <text x="210" y="66" fill="#f5c842" font-size="10.5" text-anchor="middle">與 Vc–f 圖的差異：</text>
+          <text x="210" y="82" fill="#f5c842" font-size="10.5" text-anchor="middle">斜率 h（不是 h/e）；截距 −W（不是 −W/e）</text>
+
+          <!-- ── LINE LABELS ── -->
+          <text x="544" y="33"  fill="#4f9cf9" font-size="13" font-weight="700">A</text>
+          <text x="544" y="58"  fill="#fb923c" font-size="13" font-weight="700">B</text>
+          <text x="544" y="87"  fill="#a78bfa" font-size="13" font-weight="700">C</text>
+
+          <!-- ── CAPTION ── -->
+          <text x="330" y="358" fill="#9ab0cc" font-size="11" text-anchor="middle">縱軸為最大動能 K_max（eV）；斜率直接就是 h；y 截距直接就是 −W</text>
+        </svg>
+        <p class="diag-label">K<sub>max</sub>–f 圖：與 Vc–f 圖形狀相同，斜率變為 h（直接是普朗克常數），截距變為 −W（直接是功函數）</p>
+      </div>
+
+      <!-- Right column -->
+      <div style="display:flex;flex-direction:column;gap:1rem">
+        <div class="deriv">
+          <h4>方程式推導（K<sub>max</sub>–f 直線的由來）</h4>
+          <div class="deriv-step"><span class="sn">1</span><span>光電方程式本身就是直線方程：<span class="seq">K_max = hf − W</span></span></div>
+          <div class="deriv-step"><span class="sn">2</span><span>對應 y = mx + b：</span></div>
+          <div class="deriv-step"><span class="sn">3</span><span>斜率 m = <span class="seq">h</span>（普朗克常數，各金屬相同）</span></div>
+          <div class="deriv-step"><span class="sn">4</span><span>y 截距 b = <span class="seq">−W</span>（功函數負值，各金屬不同）</span></div>
+          <div class="deriv-step"><span class="sn">5</span><span>令 K_max = 0：<span class="seq">f = f₀ = W/h</span>（x 截距）</span></div>
+        </div>
+
+        <div class="fbox"><span class="fn">K<sub>max</sub>–f 直線方程式</span>K_max = h·f − W</div>
+
+        <table class="tbl" style="font-size:.84rem">
+          <thead><tr><th>圖形特徵</th><th>物理量</th><th>計算方式</th></tr></thead>
+          <tbody>
+            <tr><td style="color:var(--green)">斜率</td><td>h（普朗克常數，直接讀取！）</td><td>斜率 = ΔK / Δf = h</td></tr>
+            <tr><td style="color:var(--accent2)">x 軸截距</td><td>底限頻率 f₀</td><td>λ₀ = c/f₀（與 Vc–f 圖相同）</td></tr>
+            <tr><td style="color:var(--red)">y 軸截距</td><td>−W（功函數負值，直接讀取！）</td><td>W = |截距|（單位 eV）</td></tr>
+            <tr><td style="color:var(--gold)">兩圖關係</td><td>K_max = eVc</td><td>縱軸數值差 e 倍</td></tr>
+          </tbody>
+        </table>
+
+        <!-- Side-by-side formula comparison -->
+        <div style="background:rgba(79,156,249,.05);border:1px solid rgba(79,156,249,.15);border-radius:10px;padding:1rem">
+          <div style="font-size:.8rem;font-weight:700;color:var(--accent2);margin-bottom:.7rem;letter-spacing:.05em">🔄 兩張圖的公式對照（考試必背）</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem;font-size:.83rem">
+            <div style="background:rgba(79,156,249,.08);border-radius:8px;padding:.7rem">
+              <div style="color:var(--accent2);font-weight:600;margin-bottom:.4rem;font-size:.78rem">Vc–f 圖</div>
+              <div style="font-family:'JetBrains Mono',monospace;color:var(--accent2);font-size:.9rem">Vc = (h/e)f − W/e</div>
+              <div style="color:var(--text3);font-size:.75rem;margin-top:.3rem">斜率 = h/e　截距 = −W/e</div>
+            </div>
+            <div style="background:rgba(61,214,140,.08);border-radius:8px;padding:.7rem">
+              <div style="color:var(--green);font-weight:600;margin-bottom:.4rem;font-size:.78rem">K<sub>max</sub>–f 圖</div>
+              <div style="font-family:'JetBrains Mono',monospace;color:var(--green);font-size:.9rem">K = hf − W</div>
+              <div style="color:var(--text3);font-size:.75rem;margin-top:.3rem">斜率 = h　　截距 = −W</div>
+            </div>
+          </div>
+          <div style="margin-top:.7rem;font-size:.8rem;color:var(--text2)">
+            x 截距（底限頻率 f₀）兩圖完全相同；兩圖縱軸差 e 倍（K = eVc）
+          </div>
+        </div>
+
+        <div class="notice nw">
+          <strong>⚠ 最容易混淆的地方</strong>
+          Vc–f 圖斜率 = <strong>h/e</strong>，K<sub>max</sub>–f 圖斜率 = <strong>h</strong>。
+          考題常給斜率要你求 h，一定要先確認縱軸是 Vc 還是 K<sub>max</sub>！
+        </div>
+
+        <div style="background:rgba(61,214,140,.04);border:1px solid rgba(61,214,140,.15);border-radius:10px;padding:1rem">
+          <div style="font-size:.8rem;font-weight:700;color:var(--green);margin-bottom:.6rem;letter-spacing:.05em">🎯 看圖解題四步驟</div>
+          <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.83rem;color:var(--text2)">
+            <div style="display:flex;gap:.6rem;align-items:flex-start">
+              <span style="background:rgba(79,156,249,.2);color:var(--accent);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">①</span>
+              <span><strong style="color:var(--gold)">求 h：</strong>取兩點算斜率。Vc–f：h = 斜率 × e；K–f：h = 斜率</span>
+            </div>
+            <div style="display:flex;gap:.6rem;align-items:flex-start">
+              <span style="background:rgba(79,156,249,.2);color:var(--accent);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">②</span>
+              <span><strong style="color:var(--accent2)">求 f₀：</strong>讀 x 截距即為底限頻率，兩圖相同</span>
+            </div>
+            <div style="display:flex;gap:.6rem;align-items:flex-start">
+              <span style="background:rgba(79,156,249,.2);color:var(--accent);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">③</span>
+              <span><strong style="color:var(--red)">求 W：</strong>Vc–f：W = |y截距| × e；K–f：W = |y截距|（直接讀出）</span>
+            </div>
+            <div style="display:flex;gap:.6rem;align-items:flex-start">
+              <span style="background:rgba(79,156,249,.2);color:var(--accent);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0">④</span>
+              <span><strong style="color:var(--purple)">比較金屬：</strong>斜率相同（h 不變）；x 截距大 → f₀ 大 → W 大（功函數大）</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why photon theory explains everything -->
+  <div class="card">
+    <div class="card-title">✅ 光子論如何解釋雷納的三大發現</div>
+    <table class="tbl">
+      <thead><tr><th>現象</th><th>古典困境</th><th>光子論的解釋</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tg">底限頻率</span></td>
+          <td style="color:var(--red)">古典：能量可累積，任何頻率照夠久都行</td>
+          <td>一個光子能量 hf 必須 ≥ W 才能打出電子。頻率 f &lt; f₀ 時，hf &lt; W，單個光子能量不足，無論多少光子都無法打出電子（能量不能累積）</td>
+        </tr>
+        <tr>
+          <td><span class="tag ty">幾乎立刻產生</span></td>
+          <td style="color:var(--red)">古典：能量需時間累積，應有延遲</td>
+          <td>光子與電子是一對一碰撞，只要光子能量 ≥ W，碰撞後立即給予電子能量，幾乎無延遲（&lt; 10⁻⁹ 秒）</td>
+        </tr>
+        <tr>
+          <td><span class="tag tb">最大動能與強度無關</span></td>
+          <td style="color:var(--red)">古典：光越強，電場越大，電子動能應越大</td>
+          <td>每個光子能量 = hf（只取決於頻率）。增加強度只是增加光子數，每個電子仍只吸收一個光子，動能仍為 hf - W</td>
+        </tr>
+        <tr>
+          <td><span class="tag tp">飽和電流 ∝ 光強度</span></td>
+          <td style="color:var(--green)">古典：部分可解釋</td>
+          <td>光強度越大 → 光子數越多 → 每秒打出的電子數越多 → 飽和電流越大。這部分古典與量子理論預測相同</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 08 ENERGY CONVERSION -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="energy">
+  <div class="sec-header"><span class="sec-num">08</span><h2 class="sec-title">能量換算完整攻略</h2><div class="sec-line"></div></div>
+
+  <div class="g2" style="margin-bottom:1.4rem">
+    <!-- Unit conversion -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(245,200,66,.15)">⚖</span>基本單位換算</div>
+      <div class="diag">
+        <svg viewBox="0 0 400 160" width="100%" style="max-height:148px">
+          <defs>
+            <marker id="cv1" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M0,0 L0,7 L7,3.5 z" fill="#4f9cf9"/></marker>
+            <marker id="cv2" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto"><path d="M7,0 L7,7 L0,3.5 z" fill="#f5c842"/></marker>
+          </defs>
+          <!-- J box -->
+          <rect x="20" y="55" width="95" height="55" rx="8" fill="rgba(79,156,249,.1)" stroke="rgba(79,156,249,.3)" stroke-width="1.5"/>
+          <text x="67" y="78" fill="#4f9cf9" font-size="11" text-anchor="middle" font-weight="bold">焦耳 (J)</text>
+          <text x="67" y="95" fill="#9ab0cc" font-size="8.5" text-anchor="middle">SI 制標準單位</text>
+          <text x="67" y="107" fill="#9ab0cc" font-size="8.5" text-anchor="middle">kg·m²/s²</text>
+          <!-- eV box -->
+          <rect x="155" y="55" width="95" height="55" rx="8" fill="rgba(245,200,66,.1)" stroke="rgba(245,200,66,.3)" stroke-width="1.5"/>
+          <text x="202" y="78" fill="#f5c842" font-size="11" text-anchor="middle" font-weight="bold">電子伏特 (eV)</text>
+          <text x="202" y="95" fill="#9ab0cc" font-size="8.5" text-anchor="middle">原子物理常用</text>
+          <text x="202" y="107" fill="#9ab0cc" font-size="8.5" text-anchor="middle">1 eV = 一電子過 1V</text>
+          <!-- Å box -->
+          <rect x="290" y="55" width="95" height="55" rx="8" fill="rgba(61,214,140,.1)" stroke="rgba(61,214,140,.3)" stroke-width="1.5"/>
+          <text x="337" y="78" fill="#3dd68c" font-size="11" text-anchor="middle" font-weight="bold">埃 (Å)</text>
+          <text x="337" y="95" fill="#9ab0cc" font-size="8.5" text-anchor="middle">X射線波長單位</text>
+          <text x="337" y="107" fill="#9ab0cc" font-size="8.5" text-anchor="middle">1 Å = 10⁻¹⁰ m</text>
+          <!-- arrows J↔eV -->
+          <path d="M115 75 L155 75" stroke="#4f9cf9" stroke-width="1.5" marker-end="url(#cv1)"/>
+          <path d="M155 87 L115 87" stroke="#f5c842" stroke-width="1.5" marker-end="url(#cv2)"/>
+          <text x="135" y="70" fill="#4f9cf9" font-size="8" text-anchor="middle">÷ 1.6×10⁻¹⁹</text>
+          <text x="135" y="98" fill="#f5c842" font-size="8" text-anchor="middle">× 1.6×10⁻¹⁹</text>
+          <!-- hc values -->
+          <text x="200" y="20" fill="#9ab0cc" font-size="9.5" text-anchor="middle">常用數值：hc = 12400 eV·Å = 1240 eV·nm</text>
+          <text x="200" y="140" fill="#text3" font-size="8.5" text-anchor="middle" fill="#5a7a9e">1 J = 6.25×10¹⁸ eV　　1 eV = 1.6×10⁻¹⁹ J　　1 nm = 10 Å = 10⁻⁹ m</text>
+        </svg>
+        <p class="diag-label">能量單位換算關係：J（標準）⟷ eV（原子物理常用）；波長單位 Å 和 nm</p>
+      </div>
+      <div class="fbox"><span class="fn">能量換算（最常用）</span>1 eV = 1.6 × 10⁻¹⁹ J</div>
+      <div class="fbox sm" style="margin-top:.5rem"><span class="fn">hc 快速換算值</span>hc ≈ 12400 eV·Å = 1240 eV·nm</div>
+    </div>
+
+    <!-- Photon energy calculation methods -->
+    <div class="card">
+      <div class="card-title"><span class="icon" style="background:rgba(79,156,249,.15)">🔢</span>光子能量三種計算方式</div>
+      <div class="deriv">
+        <h4>方法一：用頻率 f 計算（標準 SI 單位）</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>已知頻率 f（Hz），代入 <span class="seq">E = hf</span></span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>h = 6.63×10⁻³⁴ J·s，結果單位為 J</span></div>
+        <div class="deriv-step"><span class="sn">3</span><span>若需 eV：<span class="seq">÷ 1.6×10⁻¹⁹</span></span></div>
+      </div>
+      <div class="deriv" style="margin-top:.6rem">
+        <h4>方法二：用波長 λ（m）計算</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>已知 λ（m），代入 <span class="seq">E = hc/λ</span></span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>hc = 6.63×10⁻³⁴ × 3×10⁸ ≈ 1.99×10⁻²⁵ J·m</span></div>
+      </div>
+      <div class="deriv" style="margin-top:.6rem">
+        <h4>方法三：用波長 λ（Å）快速算（考試推薦！）</h4>
+        <div class="deriv-step"><span class="sn">1</span><span>將 λ 換算為 Å：<span class="seq">1 nm = 10 Å，1 m = 10¹⁰ Å</span></span></div>
+        <div class="deriv-step"><span class="sn">2</span><span>直接用 <span class="seq">E(eV) = 12400 / λ(Å)</span></span></div>
+        <div class="deriv-step"><span class="sn">3</span><span>例：λ = 5000 Å → E = 12400/5000 = <span class="seq">2.48 eV</span></span></div>
+      </div>
+      <div class="notice ng" style="margin-top:.7rem">
+        <strong>🚀 考試速算技巧</strong>
+        記住 <strong>E(eV) = 12400 / λ(Å)</strong>，這個公式幾乎涵蓋所有光電效應計算題。
+        換算關係：可見光 400–700 nm = 4000–7000 Å，能量 1.77–3.10 eV。
+      </div>
+    </div>
+  </div>
+
+  <!-- Comprehensive example table -->
+  <div class="card">
+    <div class="card-title">📊 常見光子能量對照表</div>
+    <table class="tbl">
+      <thead><tr><th>光的種類</th><th>波長 λ</th><th>波長 (Å)</th><th>頻率 f (Hz)</th><th>能量 (eV)</th><th>能量 (J)</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag tp">紫外線（近UV）</span></td><td>200 nm</td><td>2000 Å</td><td>1.5×10¹⁵</td><td>6.2 eV</td><td>9.9×10⁻¹⁹ J</td></tr>
+        <tr><td><span class="tag tp">紫光</span></td><td>400 nm</td><td>4000 Å</td><td>7.5×10¹⁴</td><td>3.10 eV</td><td>5.0×10⁻¹⁹ J</td></tr>
+        <tr><td><span class="tag tg">綠光</span></td><td>550 nm</td><td>5500 Å</td><td>5.5×10¹⁴</td><td>2.25 eV</td><td>3.6×10⁻¹⁹ J</td></tr>
+        <tr><td><span class="tag ty">黃光</span></td><td>600 nm</td><td>6000 Å</td><td>5.0×10¹⁴</td><td>2.07 eV</td><td>3.3×10⁻¹⁹ J</td></tr>
+        <tr><td><span class="tag tr">紅光</span></td><td>700 nm</td><td>7000 Å</td><td>4.3×10¹⁴</td><td>1.77 eV</td><td>2.8×10⁻¹⁹ J</td></tr>
+        <tr><td><span class="tag to">紅外線</span></td><td>1000 nm</td><td>10000 Å</td><td>3.0×10¹⁴</td><td>1.24 eV</td><td>2.0×10⁻¹⁹ J</td></tr>
+        <tr><td><span class="tag tb">X 射線</span></td><td>0.1 nm</td><td>1 Å</td><td>3.0×10¹⁸</td><td>12400 eV</td><td>2.0×10⁻¹⁵ J</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 09 FORMULA TABLE -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="formulas">
+  <div class="sec-header"><span class="sec-num">09</span><h2 class="sec-title">重要公式總表</h2><div class="sec-line"></div></div>
+  <div class="fgrid">
+    <div class="fitem"><div class="fi-name">光子能量</div><div class="fi-eq">E = hf = hc/λ</div><div class="fi-note">h = 6.63×10⁻³⁴ J·s；c = 3×10⁸ m/s</div><div class="fi-exam">⭐⭐⭐ 最基礎，每題都用</div></div>
+    <div class="fitem"><div class="fi-name">光子能量快速換算</div><div class="fi-eq">E ≈ 12400 / λ(Å)  eV</div><div class="fi-note">λ 單位需換成 Å (= 10⁻¹⁰ m)，結果單位 eV</div><div class="fi-exam">⭐⭐⭐ 考試速算必備</div></div>
+    <div class="fitem"><div class="fi-name">光子動量</div><div class="fi-eq">p = h/λ = hf/c = E/c</div><div class="fi-note">光子靜止質量為 0，但有動量</div><div class="fi-exam">⭐ 光壓、動量轉移計算</div></div>
+    <div class="fitem"><div class="fi-name">光電方程式</div><div class="fi-eq">K_max = hf − W = eVc</div><div class="fi-note">W：功函數；Vc：截止電壓</div><div class="fi-exam">⭐⭐⭐ 超高頻，各種計算</div></div>
+    <div class="fitem"><div class="fi-name">功函數與底限</div><div class="fi-eq">W = hf₀ = hc/λ₀</div><div class="fi-note">f₀：底限頻率；λ₀：底限波長</div><div class="fi-exam">⭐⭐ 由 W 求 f₀/λ₀，或反推</div></div>
+    <div class="fitem"><div class="fi-name">密立坎 Vc–f 直線</div><div class="fi-eq">Vc = (h/e)·f − W/e</div><div class="fi-note">斜率 = h/e；x截距 = f₀；y截距 = -W/e</div><div class="fi-exam">⭐⭐⭐ 看圖求 h、W、f₀</div></div>
+    <div class="fitem"><div class="fi-name">布拉格定律</div><div class="fi-eq">2d sinθ = nλ　(n=1,2…)</div><div class="fi-note">d：晶格間距；θ：掠射角（≠入射角）</div><div class="fi-exam">⭐⭐ 求波長、d 或掠射角</div></div>
+    <div class="fitem"><div class="fi-name">能量量子化</div><div class="fi-eq">E = nhf　(n=1,2,3…)</div><div class="fi-note">振子能量只能取最小單位整數倍</div><div class="fi-exam">⭐ 判斷能量值是否存在</div></div>
+    <div class="fitem"><div class="fi-name">維因位移定律</div><div class="fi-eq">λ_max · T = b</div><div class="fi-note">b ≈ 2.9×10⁶ nm·K；T 為絕對溫度(K)</div><div class="fi-exam">⭐⭐ 恆星溫度、耳溫槍計算</div></div>
+    <div class="fitem"><div class="fi-name">速度選擇器</div><div class="fi-eq">v₀ = E/B</div><div class="fi-note">eE = ev₀B，電場力 = 磁力時射線直線前進</div><div class="fi-exam">⭐ 湯姆森實驗計算</div></div>
+    <div class="fitem"><div class="fi-name">荷質比（電子）</div><div class="fi-eq">e/m = 1.76 × 10¹¹ C/kg</div><div class="fi-note">湯姆森測定值；與 e 結合求電子質量</div><div class="fi-exam">⭐ m = e/(e/m) = 9.11×10⁻³¹ kg</div></div>
+    <div class="fitem"><div class="fi-name">單位換算（必背）</div><div class="fi-eq">1 eV = 1.6×10⁻¹⁹ J</div><div class="fi-note">1 Å = 10⁻¹⁰ m；1 nm = 10 Å = 10⁻⁹ m</div><div class="fi-exam">⭐⭐⭐ 每題必用！</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 10 QUIZ -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="quiz">
+  <div class="sec-header"><span class="sec-num">10</span><h2 class="sec-title">練習題（學測 / 分科難度）</h2><div class="sec-line"></div></div>
+
+  <div class="qcard">
+    <div class="qq"><span class="qn">1</span><span>某雷射光波長為 4000 Å，求每個光子的能量（eV）。已知 hc ≈ 12400 eV·Å。</span></div>
+    <div class="qopts" id="q1o">
+      <div class="qopt" onclick="ans(this,'q1','A')"><span class="ol">A</span>1.55 eV</div>
+      <div class="qopt" onclick="ans(this,'q1','B')"><span class="ol">B</span>3.10 eV</div>
+      <div class="qopt" onclick="ans(this,'q1','C')"><span class="ol">C</span>4.96 eV</div>
+      <div class="qopt" onclick="ans(this,'q1','D')"><span class="ol">D</span>6.20 eV</div>
+    </div>
+    <div class="qexp" id="q1e">E = 12400 ÷ 4000 = <strong>3.10 eV</strong>。4000 Å = 400 nm，屬於可見光中的紫光範圍。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qq"><span class="qn">2</span><span>某金屬功函數為 2.10 eV，以波長 2500 Å 的紫外光照射，截止電壓約為多少 V？</span></div>
+    <div class="qopts" id="q2o">
+      <div class="qopt" onclick="ans(this,'q2','A')"><span class="ol">A</span>2.86 V</div>
+      <div class="qopt" onclick="ans(this,'q2','B')"><span class="ol">B</span>2.10 V</div>
+      <div class="qopt" onclick="ans(this,'q2','C')"><span class="ol">C</span>4.96 V</div>
+      <div class="qopt" onclick="ans(this,'q2','D')"><span class="ol">D</span>7.06 V</div>
+    </div>
+    <div class="qexp" id="q2e">光子能量 = 12400 ÷ 2500 = 4.96 eV<br>K_max = 4.96 − 2.10 = 2.86 eV<br>截止電壓 = K_max / e = <strong>2.86 V</strong></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qq"><span class="qn">3</span><span>晶格間距 d = 3.0 Å 的晶體，掠射角 θ = 30° 時產生第一級繞射（sin 30° = 0.5）。此 X 射線的能量為多少 eV？</span></div>
+    <div class="qopts" id="q3o">
+      <div class="qopt" onclick="ans(this,'q3','A')"><span class="ol">A</span>4133 eV</div>
+      <div class="qopt" onclick="ans(this,'q3','B')"><span class="ol">B</span>2067 eV</div>
+      <div class="qopt" onclick="ans(this,'q3','C')"><span class="ol">C</span>6200 eV</div>
+      <div class="qopt" onclick="ans(this,'q3','D')"><span class="ol">D</span>8266 eV</div>
+    </div>
+    <div class="qexp" id="q3e">布拉格（n=1）：λ = 2d sinθ = 2×3.0×0.5 = 3.0 Å<br>E = 12400 ÷ 3.0 ≈ <strong>4133 eV</strong></div>
+  </div>
+
+  <div class="qcard">
+    <div class="qq"><span class="qn">4</span><span>太陽表面溫度約 6000 K，維因常數 b = 2.9×10⁶ nm·K。太陽輻射最強的波長約為多少 nm？屬於哪個波段？</span></div>
+    <div class="qopts" id="q4o">
+      <div class="qopt" onclick="ans(this,'q4','A')"><span class="ol">A</span>290 nm（紫外線）</div>
+      <div class="qopt" onclick="ans(this,'q4','B')"><span class="ol">B</span>483 nm（可見光藍綠）</div>
+      <div class="qopt" onclick="ans(this,'q4','C')"><span class="ol">C</span>580 nm（可見光黃光）</div>
+      <div class="qopt" onclick="ans(this,'q4','D')"><span class="ol">D</span>970 nm（紅外線）</div>
+    </div>
+    <div class="qexp" id="q4e">λ_max = b/T = 2.9×10⁶ ÷ 6000 ≈ <strong>483 nm</strong>，屬於可見光（藍綠色）。這也是太陽呈白色（能量集中在可見光中段）的原因。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qq"><span class="qn">5</span><span>【多選】下列關於光電效應的敘述，哪些正確？</span></div>
+    <div class="qopts" id="q5o">
+      <div class="qopt" onclick="ansM(this,'q5','A',['B','C','D'])"><span class="ol">A</span>光強度越大，截止電壓越高</div>
+      <div class="qopt" onclick="ansM(this,'q5','B',['B','C','D'])"><span class="ol">B</span>頻率高於底限頻率時，即使光很弱也幾乎立即產生光電流</div>
+      <div class="qopt" onclick="ansM(this,'q5','C',['B','C','D'])"><span class="ol">C</span>光電子最大動能只與入射光頻率有關，與強度無關</div>
+      <div class="qopt" onclick="ansM(this,'q5','D',['B','C','D'])"><span class="ol">D</span>飽和電流與入射光強度成正比</div>
+      <div class="qopt" onclick="ansM(this,'q5','E',['B','C','D'])"><span class="ol">E</span>光強度決定每個光子的能量大小</div>
+    </div>
+    <div class="qexp" id="q5e">正確答案：<strong>BCD</strong><br>A 錯：截止電壓只取決於頻率，與強度完全無關。<br>E 錯：光強度決定光子「數目」，每個光子的能量 E = hf 只由頻率決定。</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qq"><span class="qn">6</span><span>密立坎光電效應實驗中，Vc–f 圖的斜率為 4.1×10⁻¹⁵ V·s，y 軸截距為 −2.0 V，電子電荷 e = 1.6×10⁻¹⁹ C。求：(1) 普朗克常數 h，(2) 該金屬的功函數 W（eV）。</span></div>
+    <div class="qopts" id="q6o">
+      <div class="qopt" onclick="ans(this,'q6','A')"><span class="ol">A</span>h = 6.56×10⁻³⁴ J·s，W = 2.0 eV</div>
+      <div class="qopt" onclick="ans(this,'q6','B')"><span class="ol">B</span>h = 4.1×10⁻¹⁵ J·s，W = 3.2 eV</div>
+      <div class="qopt" onclick="ans(this,'q6','C')"><span class="ol">C</span>h = 6.56×10⁻³⁴ J·s，W = 3.2 eV</div>
+      <div class="qopt" onclick="ans(this,'q6','D')"><span class="ol">D</span>h = 2.56×10⁻³³ J·s，W = 2.0 eV</div>
+    </div>
+    <div class="qexp" id="q6e">(1) h = 斜率 × e = 4.1×10⁻¹⁵ × 1.6×10⁻¹⁹ = <strong>6.56×10⁻³⁴ J·s</strong><br>(2) y截距 = −W/e = −2.0 V → W = 2.0 eV × e = <strong>2.0 eV</strong><br>（注意：y截距單位為 V，乘以 e 後才是能量，但數值在 eV 制下不變）</div>
+  </div>
+
+  <div class="qcard">
+    <div class="qq"><span class="qn">7</span><span>【綜合】以波長 200 nm 的光照射功函數為 3.1 eV 的金屬。(1) 能否發生光電效應？(2) 若能，截止電壓為多少 V？(3) 底限波長為多少 nm？</span></div>
+    <div class="qopts" id="q7o">
+      <div class="qopt" onclick="ans(this,'q7','A')"><span class="ol">A</span>能，Vc = 3.1 V，λ₀ ≈ 400 nm</div>
+      <div class="qopt" onclick="ans(this,'q7','B')"><span class="ol">B</span>能，Vc = 3.1 V，λ₀ ≈ 310 nm</div>
+      <div class="qopt" onclick="ans(this,'q7','C')"><span class="ol">C</span>不能，光子能量不足</div>
+      <div class="qopt" onclick="ans(this,'q7','D')"><span class="ol">D</span>能，Vc = 2.9 V，λ₀ ≈ 400 nm</div>
+    </div>
+    <div class="qexp" id="q7e">(1) 200 nm → 200 Å×10 = 2000 Å；E = 12400/2000 = 6.2 eV > 3.1 eV → <strong>能發生光電效應</strong><br>(2) K_max = 6.2 − 3.1 = 3.1 eV → Vc = <strong>3.1 V</strong><br>(3) λ₀ = 12400/3.1 ≈ 4000 Å = <strong>400 nm</strong></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════════════════════════ -->
+<!-- 11 STRATEGY -->
+<!-- ══════════════════════════════════════════ -->
+<section class="section" id="strategy">
+  <div class="sec-header"><span class="sec-num">11</span><h2 class="sec-title">高三複習策略</h2><div class="sec-line"></div></div>
+
+  <div class="g3" style="margin-bottom:1.8rem">
+    <div class="card" style="border-color:rgba(255,107,107,.3)">
+      <div class="card-title" style="color:var(--red)">🔴 第一優先：必背公式</div>
+      <ul style="list-style:none;font-size:.85rem;color:var(--text2)">
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ E = hf = hc/λ</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ E(eV) ≈ 12400/λ(Å)（速算必備）</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ K_max = hf − W = eVc</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ 布拉格定律 2d sinθ = nλ</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ 維因位移 λ_max·T = b</li>
+        <li style="padding:.4rem 0">✦ 1 eV = 1.6×10⁻¹⁹ J；hc = 12400 eV·Å</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(245,200,66,.3)">
+      <div class="card-title" style="color:var(--gold)">🟡 第二優先：讀圖能力</div>
+      <ul style="list-style:none;font-size:.85rem;color:var(--text2)">
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ I–V 圖：Vc 位置、飽和電流高度</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ Vc–f 圖：斜率、截距的物理意義</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ 黑體輻射曲線：溫度↑峰值往左移</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">✦ 布拉格繞射圖：θ 的定義</li>
+        <li style="padding:.4rem 0">✦ 能量量子化階梯圖</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(61,214,140,.3)">
+      <div class="card-title" style="color:var(--green)">🟢 第三優先：高頻題型</div>
+      <ul style="list-style:none;font-size:.85rem;color:var(--text2)">
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">⭐⭐⭐ 光電效應計算（W, Vc, K_max）</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">⭐⭐⭐ Vc–f 圖分析（求 h, f₀, W）</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">⭐⭐ 布拉格定律計算</li>
+        <li style="padding:.4rem 0;border-bottom:1px solid var(--border)">⭐⭐ 光子能量、動量計算</li>
+        <li style="padding:.4rem 0">⭐⭐ 光電效應概念多選題</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Top traps -->
+  <div class="card">
+    <div class="card-title">⚠ 考試最常見的陷阱（每年都考！）</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-top:.7rem">
+      <div class="notice nw"><strong>陷阱 1：光強度 ≠ 截止電壓</strong>增加光強度 → 光子數↑ → 飽和電流↑<br>但截止電壓 Vc 和最大動能<strong>完全不變！</strong></div>
+      <div class="notice nw"><strong>陷阱 2：布拉格定律的 θ</strong>θ 是掠射角（射線與晶面夾角），<br>不是射線與法線夾角（≠ 光學入射角）</div>
+      <div class="notice nw"><strong>陷阱 3：eV 與 V 的混淆</strong>截止電壓 Vc 單位是 V（伏特），<br>K_max = eVc，eVc 的單位才是 J；但數值上 K_max = Vc（eV）</div>
+      <div class="notice nw"><strong>陷阱 4：底限頻率 vs 底限波長</strong>頻率越高 → 能量越大 → 底限頻率是最小頻率<br>但底限波長 λ₀ 是對應的<strong>最長波長</strong></div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1.2rem">
+    <div class="card-title">📋 常數速查表</div>
+    <table class="tbl">
+      <thead><tr><th>常數</th><th>符號</th><th>數值</th><th>備注</th></tr></thead>
+      <tbody>
+        <tr><td>普朗克常數</td><td><span class="tag tb">h</span></td><td>6.63 × 10⁻³⁴ J·s</td><td>量子化最小單位</td></tr>
+        <tr><td>基本電量</td><td><span class="tag ty">e</span></td><td>1.60 × 10⁻¹⁹ C</td><td>密立坎測定</td></tr>
+        <tr><td>光速</td><td><span class="tag tg">c</span></td><td>3.00 × 10⁸ m/s</td><td>真空中光速</td></tr>
+        <tr><td>電子質量</td><td><span class="tag tp">m_e</span></td><td>9.11 × 10⁻³¹ kg</td><td>由 e/(e/m) 算出</td></tr>
+        <tr><td>eV 換算</td><td><span class="tag tr">eV</span></td><td>1 eV = 1.60 × 10⁻¹⁹ J</td><td>每題都用！</td></tr>
+        <tr><td>hc 換算值</td><td><span class="tag tb">hc</span></td><td>12400 eV·Å = 1240 eV·nm</td><td>考試速算神器</td></tr>
+        <tr><td>荷質比（電子）</td><td><span class="tag ty">e/m</span></td><td>1.76 × 10¹¹ C/kg</td><td>湯姆森測定</td></tr>
+        <tr><td>維因常數</td><td><span class="tag to">b</span></td><td>2.9 × 10⁶ nm·K</td><td>黑體輻射峰值計算</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<footer style="position:relative;z-index:1;text-align:center;padding:3rem 2rem;border-top:1px solid var(--border)">
+  <div style="font-family:'Noto Serif TC',serif;font-size:1.05rem;color:var(--text2);margin-bottom:.4rem">量子現象 — 選修物理 Ⅴ</div>
+  <div style="font-size:.75rem;color:var(--text3)">高三完整複習筆記 · 學測 / 分科備考</div>
+</footer>
+
+<script>
+const correct = {q1:'B',q2:'A',q3:'A',q4:'B',q6:'A',q7:'B'};
+
+function ans(el, qid, opt) {
+  const opts = document.querySelectorAll('#'+qid+'o .qopt');
+  opts.forEach(o => o.style.pointerEvents='none');
+  if (opt === correct[qid]) {
+    el.classList.add('correct');
+  } else {
+    el.classList.add('wrong');
+    opts.forEach(o => {
+      const l = o.querySelector('.ol');
+      if(l && l.textContent.trim() === correct[qid]) o.classList.add('correct');
+    });
+  }
+  document.getElementById(qid+'e').style.display='block';
+}
+
+function ansM(el, qid, opt, correctArr) {
+  if(el.classList.contains('correct')||el.classList.contains('wrong')) return;
+  if(correctArr.includes(opt)) el.classList.add('correct');
+  else el.classList.add('wrong');
+  document.getElementById(qid+'e').style.display='block';
+}
+
+// Active nav on scroll
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur='';
+  secs.forEach(s=>{ if(window.scrollY >= s.offsetTop-100) cur=s.id; });
+  links.forEach(a=>{
+    const active = a.getAttribute('href')==='#'+cur;
+    a.style.background = active ? 'var(--glow)' : '';
+    a.style.color = active ? 'var(--accent2)' : '';
+  });
+}, {passive:true});
+
+// Fade in on scroll
+const obs = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; }
+  });
+},{threshold:.07});
+document.querySelectorAll('.card,.fitem,.qcard,.app-card').forEach(el=>{
+  el.style.opacity='0';
+  el.style.transform='translateY(16px)';
+  el.style.transition='opacity .5s ease,transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>
